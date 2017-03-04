@@ -9,7 +9,7 @@ namespace DoWhatImplementation
 {
     public class DoWhat
     {
-        //instance variables
+        //instance variables coded agl11
         private String audioFileLocation;   //(.flac)
         //private Stream audioStream; //.flac     //we will use whichever Julien can coax out of the UI
         private String STTString;
@@ -17,10 +17,12 @@ namespace DoWhatImplementation
         private String verb;
         private String subject;
         private String target;
+        //coded agl11
         public String getAudioFileLocation()
         {
             return this.audioFileLocation;
         }
+        //coded agl11
         public void setAudioFileLocation(String inputAudioFileLocation)
         {
             this.audioFileLocation = inputAudioFileLocation;
@@ -74,7 +76,7 @@ namespace DoWhatImplementation
         {
             this.target = inputString;
         }
-        //default constructor builds with null
+        //default constructor builds with null coded agl11
         public DoWhat()
         {
             //audioFile = file from record;
@@ -84,6 +86,7 @@ namespace DoWhatImplementation
             this.subject = "";
             this.target = "";
         }
+        //coded agl11
         public void SendToSpeech()
         {
             String inputFileString = this.getAudioFileLocation();
@@ -113,7 +116,7 @@ namespace DoWhatImplementation
             }
             this.setSTTString(outputProcessedString);
         }
-        //static method to create a client for authentication
+        //static method to create a client for authentication coded agl11
         static public CloudSpeechAPIService CreateAuthorizedClient()
         {
             GoogleCredential credential = GoogleCredential.GetApplicationDefaultAsync().Result;
