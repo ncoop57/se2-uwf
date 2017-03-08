@@ -4,6 +4,7 @@ using Google.Apis.Auth.OAuth2;
 using Google.Apis.Services;
 using System.IO;
 using Google.Apis.CloudSpeechAPI.v1beta1.Data;
+using System.Collections.Generic;
 
 namespace DoWhatImplementation
 {
@@ -86,6 +87,11 @@ namespace DoWhatImplementation
         }
         public void SendToSpeech()
         {
+            IList<string> list = new List<string>();    //refactor
+            list.Add("Wink Hub");                       //refactor
+            list.Add("Todoist");                        //refactor
+            SpeechContext context = new SpeechContext();
+            context.Phrases = list;
             String inputFileString = this.getAudioFileLocation();
             String outputProcessedString = "";
             //authentication
@@ -97,7 +103,8 @@ namespace DoWhatImplementation
                 {
                     Encoding = "LINEAR16",
                     SampleRate = 16000,
-                    LanguageCode = "en-US"
+                    LanguageCode = "en-US",
+                    SpeechContext = context            
                 },
                 Audio = new Google.Apis.CloudSpeechAPI.v1beta1.Data.RecognitionAudio()
                 {
