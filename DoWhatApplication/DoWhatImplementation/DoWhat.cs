@@ -4,6 +4,7 @@ using Google.Apis.Auth.OAuth2;
 using Google.Apis.Services;
 using System.IO;
 using Google.Apis.CloudSpeechAPI.v1beta1.Data;
+using OpenNLP.Tools.PosTagger;
 
 namespace DoWhatImplementation
 {
@@ -13,7 +14,6 @@ namespace DoWhatImplementation
         private String audioFileLocation;   //(.flac)
         //private Stream audioStream; //.flac     //we will use whichever Julien can coax out of the UI
         private String STTString;
-        private String NLPString;
         private String verb;
         private String subject;
         private String target;
@@ -44,14 +44,6 @@ namespace DoWhatImplementation
         {
             this.STTString = inputString;
         }
-        public String getNLPString()
-        {
-            return this.NLPString;
-        }
-        public void setNLPString(String inputString)
-        {
-            this.NLPString = inputString;
-        }
         public String getVerb()
         {
             return this.verb;
@@ -81,7 +73,6 @@ namespace DoWhatImplementation
         {
             //audioFile = file from record;
             this.STTString = "";
-            this.NLPString = "";
             this.verb = "";
             this.subject = "";
             this.target = "";
@@ -115,6 +106,7 @@ namespace DoWhatImplementation
                     outputProcessedString = outputProcessedString + " " + (alternative.Transcript);
             }
             this.setSTTString(outputProcessedString);
+
         }
         //static method to create a client for authentication coded agl11
         static public CloudSpeechAPIService CreateAuthorizedClient()
@@ -134,6 +126,48 @@ namespace DoWhatImplementation
                 ApplicationName = "DoWhat Application Audio",
             });
         }
+
+        public void ProcessViaNLP(string sentence)
+        {
+
+            var modelPath = @"../../../NLPModels/Models/EnglishPOS.nbin";
+
+            var posTagger = new EnglishMaximumEntropyPosTagger(modelPath);
+            var pos = posTagger.TagSentence(sentence);
+
+
+            foreach (OpenNLP.Tools.TaggedWord word in pos)
+            {
+
+                if (this.isNoun(word.ToString()))
+                    this.subject = word.ToString().Split('/')[0];
+                else if (this.isVerb(word.ToString()))
+                    this.verb = word.ToString().Split('/')[0];
+
+            }
+
+        }
+
+        public bool isNoun(string token)
+        {
+
+            if (token.Contains("NN"))
+                return true;
+
+            return false;
+
+        }
+
+        public bool isVerb(string token)
+        {
+
+            if (token.Contains("VB"))
+                return true;
+
+            return false;
+
+        }
+
     }
 }
 
