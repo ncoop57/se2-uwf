@@ -5,16 +5,18 @@
 *
 */
 using System;
-using System.Threading;
-using System.Threading.Tasks;
+using System.Collections.Generic;
+//using System.Threading;
+//using System.Threading.Tasks;
 
 using Android.App;
 using Android.Widget;
 using Android.OS;
+using Android.Content.PM;
 using Android.Content;
-using Android.Runtime;
-using Android.Views;
-using Android.Media;
+//using Android.Runtime;
+//using Android.Views;
+//using Android.Media;
 // This class allows for the app to run. This will be cleaned up as I do more Android stuff
 namespace DoWhatapp
 {
@@ -24,7 +26,7 @@ namespace DoWhatapp
 		Audio audio = new Audio();
 		Button record = null;
 		bool isRecording = false;
-		String fileName = null;
+		string fileName = null;
 
 		private void onRecord(bool start)
 		{
@@ -38,6 +40,23 @@ namespace DoWhatapp
 			}
 		}
 
+		// Creates list of installed app package names
+		[Android.Runtime.Register("getInstalledApplications", "(I)Ljava/util/List;", "GetGetInstalledApplications_IHandler")]
+		public IList<string> GetInstalledApplications(/*[Android.Runtime.GeneratedEnum] PackageInfoFlags flags*/) 
+		{
+			var appList = new List<string>();
+			foreach (var item in PackageManager.GetInstalledApplications
+			 (new PackageInfoFlags()))
+			{
+				var context = CreatePackageContext(
+								  item.PackageName, PackageContextFlags.IgnoreSecurity);
+
+				appList.Add(context.PackageName);
+			}
+			Console.WriteLine(appList);
+			return appList;
+		}
+
 		/* runs the app */
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
@@ -45,6 +64,8 @@ namespace DoWhatapp
 
 			// Set our view from the "main" layout resource
 			SetContentView(Resource.Layout.Main);
+
+			GetInstalledApplications(/*PackageInfoFlags.Services*/);
 
 			// Record to our directory
 			fileName = GetExternalFilesDir(null).AbsolutePath;
@@ -65,4 +86,3 @@ namespace DoWhatapp
 
 	}
 }
-
