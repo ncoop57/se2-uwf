@@ -5,6 +5,7 @@ using Google.Apis.Services;
 using System.IO;
 using Google.Apis.CloudSpeechAPI.v1beta1.Data;
 using OpenNLP.Tools.PosTagger;
+using System.Collections.Generic;
 
 namespace DoWhatImplementation
 {
@@ -80,8 +81,17 @@ namespace DoWhatImplementation
         //coded agl11
         public void SendToSpeech()
         {
+
+            IList<string> list = new List<string>();
+            list.Add("Wink Hub");
+            list.Add("Todist");
+
+            SpeechContext context = new SpeechContext();
+            context.Phrases = list;
+
             String inputFileString = this.getAudioFileLocation();
             String outputProcessedString = "";
+
             //authentication
             CloudSpeechAPIService service = CreateAuthorizedClient();
             //construction of request
@@ -91,7 +101,8 @@ namespace DoWhatImplementation
                 {
                     Encoding = "LINEAR16",
                     SampleRate = 16000,
-                    LanguageCode = "en-US"
+                    LanguageCode = "en-US",
+                    SpeechContext = context
                 },
                 Audio = new Google.Apis.CloudSpeechAPI.v1beta1.Data.RecognitionAudio()
                 {
