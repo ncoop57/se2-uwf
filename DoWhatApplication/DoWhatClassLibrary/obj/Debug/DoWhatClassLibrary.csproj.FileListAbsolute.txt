@@ -1,0 +1,2 @@
+C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatClassLibrary\obj\Debug\DoWhatClassLibrary.csproj.App.config
+C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatClassLibrary\obj\Debug\DoWhatClassLibrary.csprojResolveAssemblyReference.cache

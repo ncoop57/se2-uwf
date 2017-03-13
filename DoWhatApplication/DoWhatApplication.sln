@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestDoWhatImplementatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoWhatapp", "DoWhatapp\DoWhatapp.csproj", "{7DBA0EDE-5E5B-4D65-A94A-E5EA90650BED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoWhatClassLibrary", "DoWhatClassLibrary\DoWhatClassLibrary.csproj", "{EDF4FD49-3F3D-4726-88C3-DF0A235991E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,10 @@ Global
 		{7DBA0EDE-5E5B-4D65-A94A-E5EA90650BED}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{7DBA0EDE-5E5B-4D65-A94A-E5EA90650BED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DBA0EDE-5E5B-4D65-A94A-E5EA90650BED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDF4FD49-3F3D-4726-88C3-DF0A235991E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDF4FD49-3F3D-4726-88C3-DF0A235991E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDF4FD49-3F3D-4726-88C3-DF0A235991E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDF4FD49-3F3D-4726-88C3-DF0A235991E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
