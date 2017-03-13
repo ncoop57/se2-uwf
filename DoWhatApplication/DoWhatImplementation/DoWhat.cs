@@ -4,8 +4,9 @@ using Google.Apis.Auth.OAuth2;
 using Google.Apis.Services;
 using System.IO;
 using Google.Apis.CloudSpeechAPI.v1beta1.Data;
-using OpenNLP.Tools.PosTagger;
 using System.Collections.Generic;
+using opennlp.tools;
+using opennlp.tools.postag;
 
 namespace DoWhatImplementation
 {
@@ -141,19 +142,22 @@ namespace DoWhatImplementation
         public void ProcessViaNLP(string sentence)
         {
 
-            var modelPath = @"../../../NLPModels/Models/EnglishPOS.nbin";
+            string modelPath = @"..\..\..\NLPModels\Models\";
+            java.io.FileInputStream modelInpStream = new java.io.FileInputStream(modelPath + "en-pos-perceptron.bin");
 
-            var posTagger = new EnglishMaximumEntropyPosTagger(modelPath);
-            var pos = posTagger.TagSentence(sentence);
+            POSModel model = new POSModel(modelInpStream);
+            POSTaggerME tagger = new POSTaggerME(model);
 
+            string[] words = sentence.Split(' ');
+            string[] tags = tagger.tag(words);
 
-            foreach (OpenNLP.Tools.TaggedWord word in pos)
+            for (int i = 0; i < words.Length; i++)
             {
 
-                if (this.isNoun(word.ToString()))
-                    this.subject = word.ToString().Split('/')[0];
-                else if (this.isVerb(word.ToString()))
-                    this.verb = word.ToString().Split('/')[0];
+                if (this.isNoun(tags[i]))
+                    this.setSubject(words[i]);
+                else if (this.isVerb(tags[i]))
+                    this.setVerb(words[i]);
 
             }
 
