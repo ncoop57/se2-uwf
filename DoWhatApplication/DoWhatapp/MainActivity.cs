@@ -57,6 +57,14 @@ namespace DoWhatapp
 			return appList;
 		}
 
+        /*public void openApplication(string appName)
+        {
+
+            Intent intent = PackageManager.GetLaunchIntentForPackage("com.package.address");
+            StartActivity(intent);
+
+        }*/
+
 		/* runs the app */
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
