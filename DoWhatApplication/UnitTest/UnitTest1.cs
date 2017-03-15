@@ -5,7 +5,7 @@ using Google.Apis.Auth.OAuth2;
 using Google.Apis.Services;
 using System.IO;
 using Google.Apis.CloudSpeechAPI.v1beta1.Data;
-using DoWhatClassLibrary;
+using DoWhatImplementation;
 
 namespace UnitTestDoWhatImplementation
 {

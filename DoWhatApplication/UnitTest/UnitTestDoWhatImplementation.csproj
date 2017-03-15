@@ -100,9 +100,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DoWhatClassLibrary\DoWhatClassLibrary.csproj">
-      <Project>{edf4fd49-3f3d-4726-88c3-df0a235991e5}</Project>
-      <Name>DoWhatClassLibrary</Name>
+    <ProjectReference Include="..\DoWhatImplementation\DoWhatImplementation.csproj">
+      <Project>{2f293a02-59ad-4c15-8b3e-c7d3a800b7c6}</Project>
+      <Name>DoWhatImplementation</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

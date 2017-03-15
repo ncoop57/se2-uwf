@@ -70,7 +70,6 @@ C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\Group Pro
 C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\Group Project\SE2-Project\DoWhatApplication\UnitTest\obj\Debug\UnitTest.pdb
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\UnitTest.dll
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\UnitTest.pdb
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\AuthCreateSend.dll
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\BouncyCastle.Crypto.dll
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Google.Apis.Auth.dll
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Google.Apis.Auth.PlatformServices.dll
@@ -81,7 +80,6 @@ C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\log4net.dll
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Zlib.Portable.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\AuthCreateSend.pdb
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\BouncyCastle.Crypto.pdb
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Google.Apis.pdb
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Google.Apis.xml
@@ -168,3 +166,5 @@ C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\IKVM.OpenJDK.Media.dll
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\IKVM.AWT.WinForms.dll
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\IKVM.OpenJDK.Charsets.dll
+C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\DoWhatImplementation.dll
+C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\DoWhatImplementation.pdb

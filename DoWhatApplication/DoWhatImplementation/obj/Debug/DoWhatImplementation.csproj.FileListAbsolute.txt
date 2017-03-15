@@ -90,8 +90,6 @@ C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\Group Pro
 C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\Group Project\SE2-Project\DoWhatApplication\DoWhatImplementation\obj\Debug\DoWhatImplementation.csprojResolveAssemblyReference.cache
 C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\Group Project\SE2-Project\DoWhatApplication\DoWhatImplementation\obj\Debug\AuthCreateSend.dll
 C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\Group Project\SE2-Project\DoWhatApplication\DoWhatImplementation\obj\Debug\AuthCreateSend.pdb
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\AuthCreateSend.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\AuthCreateSend.pdb
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\BouncyCastle.Crypto.dll
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\Google.Apis.Auth.dll
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\Google.Apis.Auth.PlatformServices.dll
@@ -119,8 +117,6 @@ C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\Zlib.Portable.xml
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatImplementation\obj\Debug\DoWhatImplementation.csprojResolveAssemblyReference.cache
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatImplementation\obj\Debug\AuthCreateSend.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatImplementation\obj\Debug\AuthCreateSend.pdb
 C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\AuthCreateSend.dll
 C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\AuthCreateSend.pdb
 C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\BouncyCastle.Crypto.dll
@@ -212,3 +208,7 @@ C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\IKVM.Runtime.JNI.dll
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\opennlp-tools-1.6.0.dll
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\opennlp-uima-1.6.0.dll
+C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\DoWhatImplementation.dll
+C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\DoWhatImplementation.pdb
+C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatImplementation\obj\Debug\DoWhatImplementation.dll
+C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatImplementation\obj\Debug\DoWhatImplementation.pdb
