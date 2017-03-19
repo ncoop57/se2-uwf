@@ -2,5 +2,19 @@
 <Paths>
   <ManifestDocuments />
   <NativeLibraries />
-  <Jars />
+  <Jars>
+    <Jar>obj\Debug\__library_projects__\IKVM.OpenJDK.Beans\library_project_imports\classes.jar</Jar>
+    <Jar>obj\Debug\__library_projects__\IKVM.OpenJDK.Beans\library_project_imports\resources.jar</Jar>
+    <Jar>obj\Debug\__library_projects__\IKVM.OpenJDK.Charsets\library_project_imports\resources.jar</Jar>
+    <Jar>obj\Debug\__library_projects__\IKVM.OpenJDK.Corba\library_project_imports\resources.jar</Jar>
+    <Jar>obj\Debug\__library_projects__\IKVM.OpenJDK.Core\library_project_imports\resources.jar</Jar>
+    <Jar>obj\Debug\__library_projects__\IKVM.OpenJDK.Media\library_project_imports\resources.jar</Jar>
+    <Jar>obj\Debug\__library_projects__\IKVM.OpenJDK.Naming\library_project_imports\resources.jar</Jar>
+    <Jar>obj\Debug\__library_projects__\IKVM.OpenJDK.Security\library_project_imports\classes.jar</Jar>
+    <Jar>obj\Debug\__library_projects__\IKVM.OpenJDK.SwingAWT\library_project_imports\resources.jar</Jar>
+    <Jar>obj\Debug\__library_projects__\IKVM.OpenJDK.Util\library_project_imports\classes.jar</Jar>
+    <Jar>obj\Debug\__library_projects__\IKVM.OpenJDK.Util\library_project_imports\resources.jar</Jar>
+    <Jar>obj\Debug\__library_projects__\IKVM.OpenJDK.XML.API\library_project_imports\resources.jar</Jar>
+    <Jar>obj\Debug\__library_projects__\opennlp-tools-1.6.0\library_project_imports\opennlp-tools-1.6.0.jar</Jar>
+  </Jars>
 </Paths>

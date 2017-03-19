@@ -14,6 +14,7 @@ using Android.Widget;
 using Android.OS;
 using Android.Content.PM;
 using Android.Content;
+using DoWhatImplementation;
 //using Android.Runtime;
 //using Android.Views;
 //using Android.Media;
@@ -41,29 +42,29 @@ namespace DoWhatapp
 		}
 
 		// Creates list of installed app package names
-		[Android.Runtime.Register("getInstalledApplications", "(I)Ljava/util/List;", "GetGetInstalledApplications_IHandler")]
-		public IList<string> GetInstalledApplications(/*[Android.Runtime.GeneratedEnum] PackageInfoFlags flags*/) 
-		{
-			var appList = new List<string>();
-			foreach (var item in PackageManager.GetInstalledApplications
-			 (new PackageInfoFlags()))
-			{
-				var context = CreatePackageContext(
-								  item.PackageName, PackageContextFlags.IgnoreSecurity);
+		//[Android.Runtime.Register("getInstalledApplications", "(I)Ljava/util/List;", "GetGetInstalledApplications_IHandler")]
+		//public IList<string> GetInstalledApplications(/*[Android.Runtime.GeneratedEnum] PackageInfoFlags flags*/) 
+		//{
+		//	var appList = new List<string>();
+		//	foreach (var item in PackageManager.GetInstalledApplications
+		//	 (new PackageInfoFlags()))
+		//	{
+		//		var context = CreatePackageContext(
+		//						  item.PackageName, PackageContextFlags.IgnoreSecurity);
+        //
+		//		appList.Add(context.PackageName);
+		//	}
+		//	Console.WriteLine(appList);
+		//	return appList;
+		//}
 
-				appList.Add(context.PackageName);
-			}
-			Console.WriteLine(appList);
-			return appList;
-		}
-
-        /*public void openApplication(string appName)
+        public void openApplication(string appName)
         {
 
             Intent intent = PackageManager.GetLaunchIntentForPackage("com.package.address");
             StartActivity(intent);
 
-        }*/
+        }
 
 		/* runs the app */
 		protected override void OnCreate(Bundle savedInstanceState)
@@ -73,7 +74,7 @@ namespace DoWhatapp
 			// Set our view from the "main" layout resource
 			SetContentView(Resource.Layout.Main);
 
-			GetInstalledApplications(/*PackageInfoFlags.Services*/);
+			//GetInstalledApplications(/*PackageInfoFlags.Services*/);
 
 			// Record to our directory
 			fileName = GetExternalFilesDir(null).AbsolutePath;
@@ -89,6 +90,21 @@ namespace DoWhatapp
 				isRecording = !isRecording;
 				onRecord(isRecording);
 			};
+            //createDoWhat object
+            DoWhat dowhatobject = new DoWhat();
+            dowhatobject.setAudioFileLocation(fileName);
+            dowhatobject.SendToSpeech();
+            string inputString = dowhatobject.getSTTString();
+            dowhatobject.ProcessViaNLP(inputString);
+            string inputVerb = dowhatobject.getVerb();
+            string inputSubject = dowhatobject.getSubject();
+            string openVerb = "open";
+            bool result = inputVerb.Equals(openVerb, StringComparison.Ordinal);
+            if (result)
+            {
+                openApplication(inputSubject);
+            }
+
 
 		}
 

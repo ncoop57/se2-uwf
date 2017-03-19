@@ -82,4 +82,3 @@ C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\android\assets\System.ServiceModel.Internals.dll.mdb
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\android\assets\System.Xml.dll.mdb
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\DoWhatapp.dll.mdb
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\DoWhatapp.dll.mdb
