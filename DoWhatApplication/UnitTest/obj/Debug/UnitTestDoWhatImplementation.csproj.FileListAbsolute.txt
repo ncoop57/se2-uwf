@@ -68,37 +68,6 @@ C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\Group Pro
 C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\Group Project\SE2-Project\DoWhatApplication\UnitTest\obj\Debug\UnitTestDoWhatImplementation.csprojResolveAssemblyReference.cache
 C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\Group Project\SE2-Project\DoWhatApplication\UnitTest\obj\Debug\UnitTest.dll
 C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\Group Project\SE2-Project\DoWhatApplication\UnitTest\obj\Debug\UnitTest.pdb
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\UnitTest.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\UnitTest.pdb
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\BouncyCastle.Crypto.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Google.Apis.Auth.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Google.Apis.Auth.PlatformServices.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Google.Apis.CloudSpeechAPI.v1beta1.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Google.Apis.Core.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Google.Apis.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Google.Apis.PlatformServices.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\log4net.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Zlib.Portable.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\BouncyCastle.Crypto.pdb
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Google.Apis.pdb
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Google.Apis.xml
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Google.Apis.Auth.pdb
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Google.Apis.Auth.xml
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Google.Apis.Auth.PlatformServices.pdb
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Google.Apis.Auth.PlatformServices.xml
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Google.Apis.CloudSpeechAPI.v1beta1.pdb
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Google.Apis.CloudSpeechAPI.v1beta1.xml
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Google.Apis.Core.pdb
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Google.Apis.Core.xml
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Google.Apis.PlatformServices.pdb
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Google.Apis.PlatformServices.xml
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\log4net.xml
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\Zlib.Portable.xml
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\obj\Debug\UnitTestDoWhatImplementation.csprojResolveAssemblyReference.cache
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\obj\Debug\UnitTest.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\obj\Debug\UnitTest.pdb
 C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\UnitTest.dll
 C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\UnitTest.pdb
 C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\AuthCreateSend.dll
@@ -149,22 +118,3 @@ C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\D
 C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\IKVM.OpenJDK.Media.dll
 C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\IKVM.AWT.WinForms.dll
 C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\IKVM.OpenJDK.Charsets.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\IKVM.OpenJDK.Core.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\opennlp-tools-1.6.0.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\IKVM.Runtime.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\IKVM.OpenJDK.Util.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\IKVM.OpenJDK.Text.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\IKVM.OpenJDK.Security.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\IKVM.OpenJDK.XML.API.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\IKVM.Runtime.JNI.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\IKVM.OpenJDK.Management.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\IKVM.OpenJDK.Naming.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\IKVM.OpenJDK.SwingAWT.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\IKVM.OpenJDK.Corba.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\IKVM.OpenJDK.Remoting.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\IKVM.OpenJDK.Beans.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\IKVM.OpenJDK.Media.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\IKVM.AWT.WinForms.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\IKVM.OpenJDK.Charsets.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\DoWhatImplementation.dll
-C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\UnitTest\bin\Debug\DoWhatImplementation.pdb

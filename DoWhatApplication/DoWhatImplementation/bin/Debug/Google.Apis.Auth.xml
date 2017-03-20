@@ -1115,15 +1115,38 @@
             </summary>
         </member>
         <member name="P:Google.Apis.Auth.OAuth2.Responses.TokenResponse.Issued">
-            <summary>The date and time that this token was issued. <remarks>
-            It should be set by the CLIENT after the token was received from the server.
-            </remarks> 
+            <summary>
+            The date and time that this token was issued, expressed in the system time zone.
+            This property only exists for backward compatibility; it can cause inappropriate behavior around
+            time zone transitions (e.g. daylight saving transitions).
             </summary>
+        </member>
+        <member name="P:Google.Apis.Auth.OAuth2.Responses.TokenResponse.IssuedUtc">
+            <summary>
+            The date and time that this token was issued, expressed in UTC.
+            </summary>
+            <remarks>
+            This should be set by the CLIENT after the token was received from the server.
+            </remarks>
         </member>
         <member name="M:Google.Apis.Auth.OAuth2.Responses.TokenResponse.IsExpired(Google.Apis.Util.IClock)">
             <summary>
             Returns <c>true</c> if the token is expired or it's going to be expired in the next minute.
             </summary>
+        </member>
+        <member name="M:Google.Apis.Auth.OAuth2.Responses.TokenResponse.FromHttpResponseAsync(System.Net.Http.HttpResponseMessage,Google.Apis.Util.IClock,Google.Apis.Logging.ILogger)">
+            <summary>
+            Asynchronously parses a <see cref="T:Google.Apis.Auth.OAuth2.Responses.TokenResponse"/> instance from the specified <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+            <param name="response">The http response from which to parse the token.</param>
+            <param name="clock">The clock used to set the <see cref="P:Google.Apis.Auth.OAuth2.Responses.TokenResponse.Issued"/> value of the token.</param>
+            <param name="logger">The logger used to output messages incase of error.</param>
+            <exception cref="T:Google.Apis.Auth.OAuth2.Responses.TokenResponseException">
+            The response was not successful or there is an error parsing the response into valid <see cref="T:Google.Apis.Auth.OAuth2.Responses.TokenResponse"/> instance.
+            </exception>
+            <returns>
+            A task containing the <see cref="T:Google.Apis.Auth.OAuth2.Responses.TokenResponse"/> parsed form the response message.
+            </returns>
         </member>
         <member name="T:Google.Apis.Auth.OAuth2.Responses.TokenResponseException">
             <summary>

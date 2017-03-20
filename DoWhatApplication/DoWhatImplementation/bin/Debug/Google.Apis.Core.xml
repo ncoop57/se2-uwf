@@ -488,13 +488,46 @@
         <member name="M:Google.Apis.ISerializer.Deserialize``1(System.IO.Stream)">
             <summary>Deserializes the stream into an object.</summary>
         </member>
+        <member name="T:Google.Apis.Json.JsonExplicitNull">
+            <summary>
+            Provides values which are explicitly expressed as <c>null</c> when converted to JSON.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Json.JsonExplicitNull.ForIList``1">
+            <summary>
+            Get an <see cref="T:System.Collections.Generic.IList`1"/> that is explicitly expressed as <c>null</c> when converted to JSON.
+            </summary>
+            <returns>An <see cref="T:System.Collections.Generic.IList`1"/> that is explicitly expressed as <c>null</c> when converted to JSON.</returns>
+        </member>
         <member name="T:Google.Apis.Json.IJsonSerializer">
             <summary>Represents a JSON serializer.</summary>
+        </member>
+        <member name="T:Google.Apis.Json.JsonExplicitNullAttribute">
+            <summary>
+            All values of a type with this attribute are represented as a literal <c>null</c> in JSON.
+            </summary>
         </member>
         <member name="T:Google.Apis.Json.RFC3339DateTimeConverter">
             <summary>
             A JSON converter which honers RFC 3339 and the serialized date is accepted by Google services.
             </summary>
+        </member>
+        <member name="T:Google.Apis.Json.ExplicitNullConverter">
+            <summary>
+            A JSON converter to write <c>null</c> literals into JSON when explicitly requested.
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Json.ExplicitNullConverter.CanRead">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Apis.Json.ExplicitNullConverter.CanConvert(System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Apis.Json.ExplicitNullConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Apis.Json.ExplicitNullConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <inheritdoc />
         </member>
         <member name="T:Google.Apis.Json.NewtonsoftJsonSerializer">
             <summary>Class for serialization and deserialization of JSON documents using the Newtonsoft Library.</summary>
@@ -790,7 +823,7 @@
         <member name="T:Google.Apis.Testing.VisibleForTestOnly">
             <summary>
             Marker Attribute to indicate a Method/Class/Property has been made more visible for purpose of testing.
-            Mark the method as public, without making the testing assembly as friend using
+            Mark the member as internal and make the testing assembly a friend using
             <code>[assembly: InternalsVisibleTo("Full.Name.Of.Testing.Assembly")]</code>
             </summary>
         </member>
@@ -852,7 +885,10 @@
             </summary>
         </member>
         <member name="T:Google.Apis.Util.SystemClock">
-            <summary>A default clock implementation that wraps the <see cref="P:System.DateTime.Now"/> property.</summary>
+            <summary>
+            A default clock implementation that wraps the <see cref="P:System.DateTime.UtcNow"/>
+            and <see cref="P:System.DateTime.Now"/> properties.
+            </summary>
         </member>
         <member name="M:Google.Apis.Util.SystemClock.#ctor">
             <summary>Constructs a new system clock.</summary>

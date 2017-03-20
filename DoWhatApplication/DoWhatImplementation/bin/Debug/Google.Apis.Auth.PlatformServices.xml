@@ -137,13 +137,16 @@
         <member name="M:Google.Apis.Auth.OAuth2.DefaultCredentialProvider.CreateDefaultCredentialFromStream(System.IO.Stream)">
             <summary>Creates a default credential from a stream that contains JSON credential data.</summary>
         </member>
-        <member name="M:Google.Apis.Auth.OAuth2.DefaultCredentialProvider.CreateDefaultCredentialFromJson(Google.Apis.Auth.OAuth2.JsonCredentialParameters)">
+        <member name="M:Google.Apis.Auth.OAuth2.DefaultCredentialProvider.CreateDefaultCredentialFromJson(System.String)">
+            <summary>Creates a default credential from a string that contains JSON credential data.</summary>
+        </member>
+        <member name="M:Google.Apis.Auth.OAuth2.DefaultCredentialProvider.CreateDefaultCredentialFromParameters(Google.Apis.Auth.OAuth2.JsonCredentialParameters)">
             <summary>Creates a default credential from JSON data.</summary>
         </member>
-        <member name="M:Google.Apis.Auth.OAuth2.DefaultCredentialProvider.CreateUserCredentialFromJson(Google.Apis.Auth.OAuth2.JsonCredentialParameters)">
+        <member name="M:Google.Apis.Auth.OAuth2.DefaultCredentialProvider.CreateUserCredentialFromParameters(Google.Apis.Auth.OAuth2.JsonCredentialParameters)">
             <summary>Creates a user credential from JSON data.</summary>
         </member>
-        <member name="M:Google.Apis.Auth.OAuth2.DefaultCredentialProvider.CreateServiceAccountCredentialFromJson(Google.Apis.Auth.OAuth2.JsonCredentialParameters)">
+        <member name="M:Google.Apis.Auth.OAuth2.DefaultCredentialProvider.CreateServiceAccountCredentialFromParameters(Google.Apis.Auth.OAuth2.JsonCredentialParameters)">
             <summary>Creates a <see cref="T:Google.Apis.Auth.OAuth2.ServiceAccountCredential"/> from JSON data.</summary>
         </member>
         <member name="M:Google.Apis.Auth.OAuth2.DefaultCredentialProvider.GetWellKnownCredentialFilePath">
@@ -230,6 +233,15 @@
             </para>
             </summary>
         </member>
+        <member name="M:Google.Apis.Auth.OAuth2.GoogleCredential.FromJson(System.String)">
+            <summary>
+            Loads credential from a string containing JSON credential data.
+            <para>
+            The string can contain a Service Account key file in JSON format from the Google Developers
+            Console or a stored user credential using the format supported by the Cloud SDK.
+            </para>
+            </summary>
+        </member>
         <member name="P:Google.Apis.Auth.OAuth2.GoogleCredential.IsCreateScopedRequired">
              <summary>
              <para>Returns <c>true</c> only if this credential type has no scopes by default and requires
@@ -272,7 +284,9 @@
             </summary>
         </member>
         <member name="P:Google.Apis.Auth.OAuth2.GoogleCredential.UnderlyingCredential">
-            <summary>Provides access to the underlying credential object</summary>
+            <summary>
+            Gets the underlying credential instance being wrapped.
+            </summary>
         </member>
         <member name="M:Google.Apis.Auth.OAuth2.GoogleCredential.FromCredential(Google.Apis.Auth.OAuth2.ServiceAccountCredential)">
             <summary>Creates a <c>GoogleCredential</c> wrapping a <see cref="T:Google.Apis.Auth.OAuth2.ServiceAccountCredential"/>.</summary>
@@ -282,6 +296,12 @@
             Wraps <c>ServiceAccountCredential</c> as <c>GoogleCredential</c>.
             We need this subclass because wrapping <c>ServiceAccountCredential</c> (unlike other wrapped credential
             types) requires special handling for <c>IsCreateScopedRequired</c> and <c>CreateScoped</c> members.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Auth.OAuth2.Pkcs8.Asn1">
+            <summary>
+            An incomplete ASN.1 decoder, only implements what's required
+            to decode a Service Credential.
             </summary>
         </member>
         <member name="T:Google.Apis.Auth.OAuth2.PromptCodeReceiver">
@@ -366,6 +386,16 @@
         <member name="M:Google.Apis.Auth.OAuth2.ServiceAccountCredential.#ctor(Google.Apis.Auth.OAuth2.ServiceAccountCredential.Initializer)">
             <summary>Constructs a new service account credential using the given initializer.</summary>
         </member>
+        <member name="M:Google.Apis.Auth.OAuth2.ServiceAccountCredential.FromServiceAccountData(System.IO.Stream)">
+            <summary>
+            Creates a new <see cref="T:Google.Apis.Auth.OAuth2.ServiceAccountCredential"/> instance from JSON credential data.
+            </summary>
+            <param name="credentialData">The stream from which to read the JSON key data for a service account. Must not be null.</param>
+            <exception cref="T:System.InvalidOperationException">
+            The <paramref name="credentialData"/> does not contain valid JSON service account key data.
+            </exception>
+            <returns>The credentials parsed from the service account key data.</returns>
+        </member>
         <member name="M:Google.Apis.Auth.OAuth2.ServiceAccountCredential.RequestAccessTokenAsync(System.Threading.CancellationToken)">
             <summary>
             Requests a new token as specified in 
@@ -399,20 +429,17 @@
             </summary>
             <param name="payload">the JWT payload to sign.</param>
         </member>
+        <member name="M:Google.Apis.Auth.OAuth2.ServiceAccountCredential.CreateSignature(System.Byte[])">
+            <summary>
+            Creates a base64 encoded signature for the SHA-256 hash of the specified data.
+            </summary>
+            <param name="data">The data to hash and sign. Must not be null.</param>
+            <returns>The base-64 encoded signature.</returns>
+        </member>
         <member name="M:Google.Apis.Auth.OAuth2.ServiceAccountCredential.CreateSerializedHeader">
             <summary>
             Creates a serialized header as specified in 
             https://developers.google.com/accounts/docs/OAuth2ServiceAccount#formingheader.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Auth.OAuth2.ServiceAccountCredential.ConvertPKCS8ToRsaPrivateCrtKeyParameters(System.String)">
-            <summary>
-            Converts the PKCS8 private key to RSA parameters. This method uses the Bouncy Castle library.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Auth.OAuth2.ServiceAccountCredential.ConvertPKCS8ToRSAParameters(System.String)">
-            <summary>
-            Converts the PKCS8 private key to RSA parameters. This method uses the Bouncy Castle library.
             </summary>
         </member>
         <member name="M:Google.Apis.Auth.OAuth2.ServiceAccountCredential.CreatePayload">
@@ -429,6 +456,11 @@
         <member name="M:Google.Apis.Auth.OAuth2.ServiceAccountCredential.UrlSafeBase64Encode(System.Byte[])">
             <summary>Encodes the byte array into an URL safe base64 string.</summary>
             <param name="bytes">Byte array to encode.</param>
+            <returns>The URL safe base64 string.</returns>
+        </member>
+        <member name="M:Google.Apis.Auth.OAuth2.ServiceAccountCredential.UrlSafeEncode(System.String)">
+            <summary>Encodes the base64 string into an URL safe string.</summary>
+            <param name="base64Value">The base64 string to make URL safe.</param>
             <returns>The URL safe base64 string.</returns>
         </member>
     </members>

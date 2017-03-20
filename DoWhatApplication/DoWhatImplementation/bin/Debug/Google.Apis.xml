@@ -110,6 +110,11 @@
         <member name="P:Google.Apis.Requests.ClientServiceRequest`1.ETagAction">
             <summary>Defines whether the E-Tag will be used in a specified way or be ignored.</summary>
         </member>
+        <member name="P:Google.Apis.Requests.ClientServiceRequest`1.ModifyRequest">
+            <summary>
+            Gets or sets the callback for modifying HTTP requests made by this service request.
+            </summary>
+        </member>
         <member name="M:Google.Apis.Requests.ClientServiceRequest`1.#ctor(Google.Apis.Services.IClientService)">
             <summary>Creates a new service request.</summary>
         </member>
@@ -547,6 +552,12 @@
             Default value is <see cref="F:Google.Apis.Download.MediaDownloader.MaximumChunkSize"/>.
             </summary>
         </member>
+        <member name="P:Google.Apis.Download.MediaDownloader.Range">
+            <summary>
+            The range header for the request, if any. This can be used to download specific parts
+            of the requested media.
+            </summary>
+        </member>
         <member name="T:Google.Apis.Download.MediaDownloader.DownloadProgress">
             <summary>
             Download progress model, which contains the status of the download, the amount of bytes whose where 
@@ -579,6 +590,11 @@
         </member>
         <member name="M:Google.Apis.Download.MediaDownloader.#ctor(Google.Apis.Services.IClientService)">
             <summary>Constructs a new downloader with the given client service.</summary>
+        </member>
+        <member name="P:Google.Apis.Download.MediaDownloader.ModifyRequest">
+            <summary>
+            Gets or sets the callback for modifying requests made when downloading.
+            </summary>
         </member>
         <member name="T:Google.Apis.Download.MediaDownloader.CountedBuffer">
             <summary>
@@ -624,12 +640,42 @@
             <returns>A task with the download progress object. If an exception occurred during the download, its 
             <see cref="P:Google.Apis.Download.IDownloadProgress.Exception"/> property will contain the exception.</returns>
         </member>
+        <member name="M:Google.Apis.Download.MediaDownloader.OnResponseReceived(System.Net.Http.HttpResponseMessage)">
+            <summary>
+            Called when a successful HTTP response is received, allowing subclasses to examine headers.
+            </summary>
+            <remarks>
+            For unsuccessful responses, an appropriate exception is thrown immediately, without this method
+            being called.
+            </remarks>
+            <param name="response">HTTP response received.</param>
+        </member>
+        <member name="M:Google.Apis.Download.MediaDownloader.OnDataReceived(System.Byte[],System.Int32)">
+            <summary>
+            Called when an HTTP response is received, allowing subclasses to examine data before it's
+            written to the client stream.
+            </summary>
+            <param name="data">Byte array containing the data downloaded.</param>
+            <param name="length">Length of data downloaded in this chunk, in bytes.</param>
+        </member>
+        <member name="M:Google.Apis.Download.MediaDownloader.OnDownloadCompleted">
+            <summary>
+            Called when a download has completed, allowing subclasses to perform any final validation
+            or transformation.
+            </summary>
+        </member>
         <member name="T:Google.Apis.Media.MediaApiErrorHandling">
             <summary>
             Common error handling code for the Media API.
             </summary>
         </member>
         <member name="M:Google.Apis.Media.MediaApiErrorHandling.ExceptionForResponseAsync(Google.Apis.Services.IClientService,System.Net.Http.HttpResponseMessage)">
+            <summary>
+            Creates a suitable exception for an HTTP response, attempting to parse the body as
+            JSON but falling back to just using the text as the message.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Media.MediaApiErrorHandling.ExceptionForResponseAsync(Google.Apis.ISerializer,System.String,System.Net.Http.HttpResponseMessage)">
             <summary>
             Creates a suitable exception for an HTTP response, attempting to parse the body as
             JSON but falling back to just using the text as the message.
@@ -702,6 +748,345 @@
             Gets an exception if one occurred.
             </summary>
         </member>
+        <member name="T:Google.Apis.Upload.ResumableUpload">
+            <summary>
+            Media upload which uses Google's resumable media upload protocol to upload data.
+            </summary>
+            <remarks>
+            See: https://developers.google.com/drive/manage-uploads#resumable for more information on the protocol.
+            </remarks>
+        </member>
+        <member name="F:Google.Apis.Upload.ResumableUpload.Logger">
+            <summary>The class logger.</summary>
+        </member>
+        <member name="F:Google.Apis.Upload.ResumableUpload.MinimumChunkSize">
+            <summary>Minimum chunk size (except the last one). Default value is 256*KB.</summary>
+        </member>
+        <member name="F:Google.Apis.Upload.ResumableUpload.DefaultChunkSize">
+            <summary>Default chunk size. Default value is 10*MB.</summary>
+        </member>
+        <member name="F:Google.Apis.Upload.ResumableUpload.BufferSize">
+            <summary>
+            Defines how many bytes are read from the input stream in each stream read action. 
+            The read will continue until we read <see cref="F:Google.Apis.Upload.ResumableUpload.MinimumChunkSize"/> or we reached the end of the stream.
+            </summary>
+        </member>
+        <member name="F:Google.Apis.Upload.ResumableUpload.UnknownSize">
+            <summary>Indicates the stream's size is unknown.</summary>
+        </member>
+        <member name="F:Google.Apis.Upload.ResumableUpload.ZeroByteContentRangeHeader">
+            <summary>Content-Range header value for the body upload of zero length files.</summary>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.#ctor(System.IO.Stream,Google.Apis.Upload.ResumableUploadOptions)">
+            <summary>
+            Creates a <see cref="T:Google.Apis.Upload.ResumableUpload"/> instance.
+            </summary>
+            <param name="contentStream">The data to be uploaded. Must not be null.</param>
+            <param name="options">The options for the upload operation. May be null.</param>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.CreateFromUploadUri(System.Uri,System.IO.Stream,Google.Apis.Upload.ResumableUploadOptions)">
+            <summary>
+            Creates a <see cref="T:Google.Apis.Upload.ResumableUpload"/> instance for a resumable upload session which has already been initiated.
+            </summary>
+            <remarks>
+            See https://cloud.google.com/storage/docs/json_api/v1/how-tos/resumable-upload#start-resumable for more information about initiating
+            resumable upload sessions and saving the session URI, or upload URI.
+            </remarks>
+            <param name="uploadUri">The session URI of the resumable upload session. Must not be null.</param>
+            <param name="contentStream">The data to be uploaded. Must not be null.</param>
+            <param name="options">The options for the upload operation. May be null.</param>
+            <returns>The instance which can be used to upload the specified content.</returns>
+        </member>
+        <member name="P:Google.Apis.Upload.ResumableUpload.Options">
+            <summary>
+            Gets the options used to control the resumable upload.
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Upload.ResumableUpload.HttpClient">
+            <summary>
+            Gets the HTTP client to use to make requests.
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Upload.ResumableUpload.ContentStream">
+            <summary>Gets or sets the stream to upload.</summary>
+        </member>
+        <member name="P:Google.Apis.Upload.ResumableUpload.StreamLength">
+            <summary>
+            Gets or sets the length of the steam. Will be <see cref="F:Google.Apis.Upload.ResumableUpload.UnknownSize" /> if the media content length is 
+            unknown. 
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Upload.ResumableUpload.LastMediaRequest">
+            <summary>
+            Gets or sets the content of the last buffer request to the server or <c>null</c>. It is used when the media
+            content length is unknown, for resending it in case of server error.
+            Only used with a non-seekable stream.
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Upload.ResumableUpload.LastMediaLength">
+            <summary>
+            Gets or sets the last request length.
+            Only used with a non-seekable stream.
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Upload.ResumableUpload.UploadUri">
+            <summary>
+            Gets or sets the resumable session URI. 
+            See https://developers.google.com/drive/manage-uploads#save-session-uri" for more details.
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Upload.ResumableUpload.BytesServerReceived">
+            <summary>Gets or sets the amount of bytes the server had received so far.</summary>
+        </member>
+        <member name="P:Google.Apis.Upload.ResumableUpload.BytesClientSent">
+            <summary>Gets or sets the amount of bytes the client had sent so far.</summary>
+        </member>
+        <member name="F:Google.Apis.Upload.ResumableUpload.chunkSize">
+            <summary>Change this value ONLY for testing purposes!</summary>
+        </member>
+        <member name="P:Google.Apis.Upload.ResumableUpload.ChunkSize">
+            <summary>
+            Gets or sets the size of each chunk sent to the server.
+            Chunks (except the last chunk) must be a multiple of <see cref="F:Google.Apis.Upload.ResumableUpload.MinimumChunkSize"/> to be compatible with 
+            Google upload servers.
+            </summary>
+        </member>
+        <member name="E:Google.Apis.Upload.ResumableUpload.ProgressChanged">
+            <summary>Event called whenever the progress of the upload changes.</summary>
+        </member>
+        <member name="T:Google.Apis.Upload.ResumableUpload.ServerErrorCallback">
+            <summary>
+            Callback class that is invoked on abnormal response or an exception.
+            This class changes the request to query the current status of the upload in order to find how many bytes  
+            were successfully uploaded before the error occurred.
+            See https://developers.google.com/drive/manage-uploads#resume-upload for more details.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.ServerErrorCallback.#ctor(Google.Apis.Upload.ResumableUpload)">
+            <summary>
+            Constructs a new callback and register it as unsuccessful response handler and exception handler on the 
+            configurable message handler.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.ServerErrorCallback.OnServerError(System.Net.Http.HttpRequestMessage)">
+            <summary>Changes the request in order to resume the interrupted upload.</summary>
+        </member>
+        <member name="T:Google.Apis.Upload.ResumableUpload.ResumableUploadProgress">
+            <summary>Class that communicates the progress of resumable uploads to a container.</summary>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.ResumableUploadProgress.#ctor(Google.Apis.Upload.UploadStatus,System.Int64)">
+            <summary>
+            Create a ResumableUploadProgress instance.
+            </summary>
+            <param name="status">The status of the upload.</param>
+            <param name="bytesSent">The number of bytes sent so far.</param>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.ResumableUploadProgress.#ctor(System.Exception,System.Int64)">
+            <summary>
+            Create a ResumableUploadProgress instance.
+            </summary>
+            <param name="exception">An exception that occurred during the upload.</param>
+            <param name="bytesSent">The number of bytes sent before this exception occurred.</param>
+        </member>
+        <member name="P:Google.Apis.Upload.ResumableUpload.Progress">
+            <summary>
+            Current state of progress of the upload.
+            </summary>
+            <seealso cref="E:Google.Apis.Upload.ResumableUpload.ProgressChanged"/>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.UpdateProgress(Google.Apis.Upload.ResumableUpload.ResumableUploadProgress)">
+            <summary>
+            Updates the current progress and call the <see cref="E:Google.Apis.Upload.ResumableUpload.ProgressChanged"/> event to notify listeners.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.GetProgress">
+            <summary>
+            Get the current progress state.
+            </summary>
+            <returns>An IUploadProgress describing the current progress of the upload.</returns>
+            <seealso cref="E:Google.Apis.Upload.ResumableUpload.ProgressChanged"/>
+        </member>
+        <member name="E:Google.Apis.Upload.ResumableUpload.UploadSessionData">
+            <summary>
+            Event called when an UploadUri is created. 
+            Not needed if the application program will not support resuming after a program restart.
+            </summary>
+            <remarks>
+            Within the event, persist the UploadUri to storage.
+            It is strongly recommended that the full path filename (or other media identifier) is also stored so that it can be compared to the current open filename (media) upon restart.
+            </remarks>
+        </member>
+        <member name="T:Google.Apis.Upload.ResumableUpload.ResumeableUploadSessionData">
+            <summary>
+            Data to be passed to the application program to allow resuming an upload after a program restart.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.ResumeableUploadSessionData.#ctor(System.Uri)">
+            <summary>
+            Create a ResumeableUploadSessionData instance to pass the UploadUri to the client.
+            </summary>
+            <param name="uploadUri">The resumable session URI.</param>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.SendUploadSessionData(Google.Apis.Upload.ResumableUpload.ResumeableUploadSessionData)">
+            <summary>
+            Send data (UploadUri) to application so it can store it to persistent storage.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.Upload">
+            <summary>
+            Uploads the content to the server. This method is synchronous and will block until the upload is completed.
+            </summary>
+            <remarks>
+            In case the upload fails the <see cref="P:Google.Apis.Upload.IUploadProgress.Exception"/> will contain the exception that
+            cause the failure.
+            </remarks>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.UploadAsync">
+            <summary>Uploads the content asynchronously to the server.</summary>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.UploadAsync(System.Threading.CancellationToken)">
+            <summary>Uploads the content to the server using the given cancellation token.</summary>
+            <remarks>
+            In case the upload fails <see cref="P:Google.Apis.Upload.IUploadProgress.Exception"/> will contain the exception that
+            cause the failure. The only exception which will be thrown is 
+            <see cref="T:System.Threading.Tasks.TaskCanceledException"/> which indicates that the task was canceled.
+            </remarks>
+            <param name="cancellationToken">A cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.Resume">
+            <summary>
+            Resumes the upload from the last point it was interrupted. 
+            Use when resuming and the program was not restarted.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.Resume(System.Uri)">
+            <summary>
+            Resumes the upload from the last point it was interrupted. 
+            Use when the program was restarted and you wish to resume the upload that was in progress when the program was halted. 
+            Implemented only for ContentStreams where .CanSeek is True.
+            </summary>
+            <remarks>
+            In your application's UploadSessionData Event Handler, store UploadUri.AbsoluteUri property value (resumable session URI string value)
+            to persistent storage for use with Resume() or ResumeAsync() upon a program restart.
+            It is strongly recommended that the FullPathFilename of the media file that is being uploaded is saved also so that a subsequent execution of the
+            program can compare the saved FullPathFilename value to the FullPathFilename of the media file that it has opened for uploading.
+            You do not need to seek to restart point in the ContentStream file.
+            </remarks>
+            <param name="uploadUri">VideosResource.InsertMediaUpload UploadUri property value that was saved to persistent storage during a prior execution.</param>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.ResumeAsync">
+            <summary>
+            Asynchronously resumes the upload from the last point it was interrupted.
+            </summary>
+            <remarks>
+            You do not need to seek to restart point in the ContentStream file.
+            </remarks>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.ResumeAsync(System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously resumes the upload from the last point it was interrupted. 
+            Use when resuming and the program was not restarted.
+            </summary>
+            <remarks>
+            You do not need to seek to restart point in the ContentStream file.
+            </remarks>
+            <param name="cancellationToken">A cancellation token to cancel the asynchronous operation.</param>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.ResumeAsync(System.Uri)">
+            <summary>
+            Asynchronously resumes the upload from the last point it was interrupted. 
+            Use when resuming and the program was restarted.
+            Implemented only for ContentStreams where .CanSeek is True.
+            </summary>
+            <remarks>
+            In your application's UploadSessionData Event Handler, store UploadUri.AbsoluteUri property value (resumable session URI string value)
+            to persistent storage for use with Resume() or ResumeAsync() upon a program restart.
+            It is strongly recommended that the FullPathFilename of the media file that is being uploaded is saved also so that a subsequent execution of the
+            program can compare the saved FullPathFilename value to the FullPathFilename of the media file that it has opened for uploading.
+            You do not need to seek to restart point in the ContentStream file.
+            </remarks>
+            <param name="uploadUri">VideosResource.InsertMediaUpload UploadUri property value that was saved to persistent storage during a prior execution.</param>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.ResumeAsync(System.Uri,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously resumes the upload from the last point it was interrupted. 
+            Use when the program was restarted and you wish to resume the upload that was in progress when the program was halted.
+            Implemented only for ContentStreams where .CanSeek is True.
+            </summary>
+            <remarks>
+            In your application's UploadSessionData Event Handler, store UploadUri.AbsoluteUri property value (resumable session URI string value)
+            to persistent storage for use with Resume() or ResumeAsync() upon a program restart.
+            It is strongly recommended that the FullPathFilename of the media file that is being uploaded is saved also so that a subsequent execution of the
+            program can compare the saved FullPathFilename value to the FullPathFilename of the media file that it has opened for uploading.
+            You do not need to seek to restart point in the ContentStream file.
+            </remarks>
+            <param name="uploadUri">VideosResource.InsertMediaUpload UploadUri property value that was saved to persistent storage during a prior execution.</param>
+            <param name="cancellationToken">A cancellation token to cancel the asynchronous operation.</param>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.UploadCoreAsync(System.Threading.CancellationToken)">
+            <summary>The core logic for uploading a stream. It is used by the upload and resume methods.</summary>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.InitiateSessionAsync(System.Threading.CancellationToken)">
+            <summary>
+            Initiates the resumable upload session and returns the session URI, or upload URI.
+            See https://developers.google.com/drive/manage-uploads#start-resumable and
+            https://cloud.google.com/storage/docs/json_api/v1/how-tos/resumable-upload#start-resumable for more information.
+            </summary>
+            <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+            <returns>
+            The task containing the session URI to use for the resumable upload.
+            </returns>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.ProcessResponse(System.Net.Http.HttpResponseMessage)">
+            <summary>
+            Process a response from the final upload chunk call.
+            </summary>
+            <param name="httpResponse">The response body from the final uploaded chunk.</param>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.SendNextChunkAsync(System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>Uploads the next chunk of data to the server.</summary>
+            <returns><c>True</c> if the entire media has been completely uploaded.</returns>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.HandleResponse(System.Net.Http.HttpResponseMessage)">
+            <summary>Handles a media upload HTTP response.</summary>
+            <returns><c>True</c> if the entire media has been completely uploaded.</returns>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.ExceptionForResponseAsync(System.Net.Http.HttpResponseMessage)">
+            <summary>
+            Creates a <see cref="T:Google.GoogleApiException"/> instance using the error response from the server.
+            </summary>
+            <param name="response">The error response.</param>
+            <returns>An exception which can be thrown by the caller.</returns>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.MediaCompleted(System.Net.Http.HttpResponseMessage)">
+            <summary>A callback when the media was uploaded successfully.</summary>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.PrepareNextChunkUnknownSize(System.Net.Http.HttpRequestMessage,System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>Prepares the given request with the next chunk in case the steam length is unknown.</summary>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.PrepareNextChunkKnownSize(System.Net.Http.HttpRequestMessage,System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>Prepares the given request with the next chunk in case the steam length is known.</summary>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.GetNextByte(System.String)">
+            <summary>Returns the next byte index need to be sent.</summary>
+        </member>
+        <member name="M:Google.Apis.Upload.ResumableUpload.GetContentRangeHeader(System.Int64,System.Int64)">
+            <summary>
+            Build a content range header of the form: "bytes X-Y/T" where:
+            <list type="">
+            <item>X is the first byte being sent.</item>
+            <item>Y is the last byte in the range being sent (inclusive).</item>
+            <item>T is the total number of bytes in the range or * for unknown size.</item>
+            </list>
+            </summary>
+            <remarks>
+            See: RFC2616 HTTP/1.1, Section 14.16 Header Field Definitions, Content-Range
+            http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.16
+            </remarks>
+            <param name="chunkStart">Start of the chunk.</param>
+            <param name="chunkSize">Size of the chunk being sent.</param>
+            <returns>The content range header value.</returns>
+        </member>
         <member name="T:Google.Apis.Upload.ResumableUpload`1">
             <summary>
             Media upload which uses Google's resumable media upload protocol to upload data.
@@ -714,27 +1099,6 @@
             uploaded. Must be serializable to/from JSON.
             </typeparam>
         </member>
-        <member name="F:Google.Apis.Upload.ResumableUpload`1.Logger">
-            <summary>The class logger.</summary>
-        </member>
-        <member name="F:Google.Apis.Upload.ResumableUpload`1.MinimumChunkSize">
-            <summary>Minimum chunk size (except the last one). Default value is 256*KB.</summary>
-        </member>
-        <member name="F:Google.Apis.Upload.ResumableUpload`1.DefaultChunkSize">
-            <summary>Default chunk size. Default value is 10*MB.</summary>
-        </member>
-        <member name="F:Google.Apis.Upload.ResumableUpload`1.BufferSize">
-            <summary>
-            Defines how many bytes are read from the input stream in each stream read action. 
-            The read will continue until we read <see cref="F:Google.Apis.Upload.ResumableUpload`1.MinimumChunkSize"/> or we reached the end of the stream.
-            </summary>
-        </member>
-        <member name="F:Google.Apis.Upload.ResumableUpload`1.UnknownSize">
-            <summary>Indicates the stream's size is unknown.</summary>
-        </member>
-        <member name="F:Google.Apis.Upload.ResumableUpload`1.JsonMimeType">
-            <summary>The mime type for the encoded JSON body.</summary>
-        </member>
         <member name="F:Google.Apis.Upload.ResumableUpload`1.PayloadContentTypeHeader">
             <summary>Payload description headers, describing the content itself.</summary>
         </member>
@@ -746,9 +1110,6 @@
         </member>
         <member name="F:Google.Apis.Upload.ResumableUpload`1.Resumable">
             <summary>The uploadType parameter value for resumable uploads.</summary>
-        </member>
-        <member name="F:Google.Apis.Upload.ResumableUpload`1.ZeroByteContentRangeHeader">
-            <summary>Content-Range header value for the body upload of zero length files.</summary>
         </member>
         <member name="M:Google.Apis.Upload.ResumableUpload`1.#ctor(Google.Apis.Services.IClientService,System.String,System.String,System.IO.Stream,System.String)">
             <summary>
@@ -780,282 +1141,14 @@
         <member name="P:Google.Apis.Upload.ResumableUpload`1.HttpMethod">
             <summary>Gets or sets the HTTP method of this upload (used to initialize the upload).</summary>
         </member>
-        <member name="P:Google.Apis.Upload.ResumableUpload`1.ContentStream">
-            <summary>Gets or sets the stream to upload.</summary>
-        </member>
         <member name="P:Google.Apis.Upload.ResumableUpload`1.ContentType">
             <summary>Gets or sets the stream's Content-Type.</summary>
-        </member>
-        <member name="P:Google.Apis.Upload.ResumableUpload`1.StreamLength">
-            <summary>
-            Gets or sets the length of the steam. Will be <see cref="F:Google.Apis.Upload.ResumableUpload`1.UnknownSize" /> if the media content length is 
-            unknown. 
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Upload.ResumableUpload`1.LastMediaRequest">
-            <summary>
-            Gets or sets the content of the last buffer request to the server or <c>null</c>. It is used when the media
-            content length is unknown, for resending it in case of server error.
-            Only used with a non-seekable stream.
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Upload.ResumableUpload`1.LastMediaLength">
-            <summary>
-            Gets or sets the last request length.
-            Only used with a non-seekable stream.
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Upload.ResumableUpload`1.UploadUri">
-            <summary>
-            Gets or sets the resumable session Uri. 
-            See https://developers.google.com/drive/manage-uploads#save-session-uri" for more details.
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Upload.ResumableUpload`1.BytesServerReceived">
-            <summary>Gets or sets the amount of bytes the server had received so far.</summary>
-        </member>
-        <member name="P:Google.Apis.Upload.ResumableUpload`1.BytesClientSent">
-            <summary>Gets or sets the amount of bytes the client had sent so far.</summary>
         </member>
         <member name="P:Google.Apis.Upload.ResumableUpload`1.Body">
             <summary>Gets or sets the body of this request.</summary>
         </member>
-        <member name="F:Google.Apis.Upload.ResumableUpload`1.chunkSize">
-            <summary>Change this value ONLY for testing purposes!</summary>
-        </member>
-        <member name="P:Google.Apis.Upload.ResumableUpload`1.ChunkSize">
-            <summary>
-            Gets or sets the size of each chunk sent to the server.
-            Chunks (except the last chunk) must be a multiple of <see cref="F:Google.Apis.Upload.ResumableUpload`1.MinimumChunkSize"/> to be compatible with 
-            Google upload servers.
-            </summary>
-        </member>
-        <member name="E:Google.Apis.Upload.ResumableUpload`1.ProgressChanged">
-            <summary>Event called whenever the progress of the upload changes.</summary>
-        </member>
-        <member name="T:Google.Apis.Upload.ResumableUpload`1.ServerErrorCallback">
-            <summary>
-            Callback class that is invoked on abnormal response or an exception.
-            This class changes the request to query the current status of the upload in order to find how many bytes  
-            were successfully uploaded before the error occurred.
-            See https://developers.google.com/drive/manage-uploads#resume-upload for more details.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Upload.ResumableUpload`1.ServerErrorCallback.#ctor(Google.Apis.Upload.ResumableUpload{`0})">
-            <summary>
-            Constructs a new callback and register it as unsuccessful response handler and exception handler on the 
-            configurable message handler.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Upload.ResumableUpload`1.ServerErrorCallback.OnServerError(System.Net.Http.HttpRequestMessage)">
-            <summary>Changes the request in order to resume the interrupted upload.</summary>
-        </member>
-        <member name="T:Google.Apis.Upload.ResumableUpload`1.ResumableUploadProgress">
-            <summary>Class that communicates the progress of resumable uploads to a container.</summary>
-        </member>
-        <member name="M:Google.Apis.Upload.ResumableUpload`1.ResumableUploadProgress.#ctor(Google.Apis.Upload.UploadStatus,System.Int64)">
-            <summary>
-            Create a ResumableUploadProgress instance.
-            </summary>
-            <param name="status">The status of the upload.</param>
-            <param name="bytesSent">The number of bytes sent so far.</param>
-        </member>
-        <member name="M:Google.Apis.Upload.ResumableUpload`1.ResumableUploadProgress.#ctor(System.Exception,System.Int64)">
-            <summary>
-            Create a ResumableUploadProgress instance.
-            </summary>
-            <param name="exception">An exception that occurred during the upload.</param>
-            <param name="bytesSent">The number of bytes sent before this exception occurred.</param>
-        </member>
-        <member name="P:Google.Apis.Upload.ResumableUpload`1.Progress">
-            <summary>
-            Current state of progress of the upload.
-            </summary>
-            <seealso cref="E:Google.Apis.Upload.ResumableUpload`1.ProgressChanged"/>
-        </member>
-        <member name="M:Google.Apis.Upload.ResumableUpload`1.UpdateProgress(Google.Apis.Upload.ResumableUpload{`0}.ResumableUploadProgress)">
-            <summary>
-            Updates the current progress and call the <see cref="E:Google.Apis.Upload.ResumableUpload`1.ProgressChanged"/> event to notify listeners.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Upload.ResumableUpload`1.GetProgress">
-            <summary>
-            Get the current progress state.
-            </summary>
-            <returns>An IUploadProgress describing the current progress of the upload.</returns>
-            <seealso cref="E:Google.Apis.Upload.ResumableUpload`1.ProgressChanged"/>
-        </member>
-        <member name="E:Google.Apis.Upload.ResumableUpload`1.UploadSessionData">
-            <summary>
-            Event called when an UploadUri is created. 
-            Not needed if the application program will not support resuming after a program restart.
-            </summary>
-            <remarks>
-            Within the event, persist the UploadUri to storage.
-            It is strongly recommended that the full path filename (or other media identifier) is also stored so that it can be compared to the current open filename (media) upon restart.
-            </remarks>
-        </member>
-        <member name="T:Google.Apis.Upload.ResumableUpload`1.ResumeableUploadSessionData">
-            <summary>
-            Data to be passed to the application program to allow resuming an upload after a program restart.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Upload.ResumableUpload`1.ResumeableUploadSessionData.#ctor(System.Uri)">
-            <summary>
-            Create a ResumeableUploadSessionData instance to pass the UploadUri to the client.
-            </summary>
-            <param name="uploadUri">The resumable session URI.</param>
-        </member>
-        <member name="M:Google.Apis.Upload.ResumableUpload`1.SendUploadSessionData(Google.Apis.Upload.ResumableUpload{`0}.ResumeableUploadSessionData)">
-            <summary>
-            Send data (UploadUri) to application so it can store it to persistent storage.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Upload.ResumableUpload`1.Upload">
-            <summary>
-            Uploads the content to the server. This method is synchronous and will block until the upload is completed.
-            </summary>
-            <remarks>
-            In case the upload fails the <see cref="P:Google.Apis.Upload.IUploadProgress.Exception"/> will contain the exception that
-            cause the failure.
-            </remarks>
-        </member>
-        <member name="M:Google.Apis.Upload.ResumableUpload`1.UploadAsync">
-            <summary>Uploads the content asynchronously to the server.</summary>
-        </member>
-        <member name="M:Google.Apis.Upload.ResumableUpload`1.UploadAsync(System.Threading.CancellationToken)">
-            <summary>Uploads the content to the server using the given cancellation token.</summary>
-            <remarks>
-            In case the upload fails <see cref="P:Google.Apis.Upload.IUploadProgress.Exception"/> will contain the exception that
-            cause the failure. The only exception which will be thrown is 
-            <see cref="T:System.Threading.Tasks.TaskCanceledException"/> which indicates that the task was canceled.
-            </remarks>
-            <param name="cancellationToken">A cancellation token to cancel operation.</param>
-        </member>
-        <member name="M:Google.Apis.Upload.ResumableUpload`1.Resume">
-            <summary>
-            Resumes the upload from the last point it was interrupted. 
-            Use when resuming and the program was not restarted.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Upload.ResumableUpload`1.Resume(System.Uri)">
-            <summary>
-            Resumes the upload from the last point it was interrupted. 
-            Use when the program was restarted and you wish to resume the upload that was in progress when the program was halted. 
-            Implemented only for ContentStreams where .CanSeek is True.
-            </summary>
-            <remarks>
-            In your application's UploadSessionData Event Handler, store UploadUri.AbsoluteUri property value (resumable session URI string value)
-            to persistent storage for use with Resume() or ResumeAsync() upon a program restart.
-            It is strongly recommended that the FullPathFilename of the media file that is being uploaded is saved also so that a subsequent execution of the
-            program can compare the saved FullPathFilename value to the FullPathFilename of the media file that it has opened for uploading.
-            You do not need to seek to restart point in the ContentStream file.
-            </remarks>
-            <param name="uploadUri">VideosResource.InsertMediaUpload UploadUri property value that was saved to persistent storage during a prior execution.</param>
-        </member>
-        <member name="M:Google.Apis.Upload.ResumableUpload`1.ResumeAsync">
-            <summary>
-            Asynchronously resumes the upload from the last point it was interrupted.
-            </summary>
-            <remarks>
-            You do not need to seek to restart point in the ContentStream file.
-            </remarks>
-        </member>
-        <member name="M:Google.Apis.Upload.ResumableUpload`1.ResumeAsync(System.Threading.CancellationToken)">
-            <summary>
-            Asynchronously resumes the upload from the last point it was interrupted. 
-            Use when resuming and the program was not restarted.
-            </summary>
-            <remarks>
-            You do not need to seek to restart point in the ContentStream file.
-            </remarks>
-            <param name="cancellationToken">A cancellation token to cancel the asynchronous operation.</param>
-        </member>
-        <member name="M:Google.Apis.Upload.ResumableUpload`1.ResumeAsync(System.Uri)">
-            <summary>
-            Asynchronously resumes the upload from the last point it was interrupted. 
-            Use when resuming and the program was restarted.
-            Implemented only for ContentStreams where .CanSeek is True.
-            </summary>
-            <remarks>
-            In your application's UploadSessionData Event Handler, store UploadUri.AbsoluteUri property value (resumable session URI string value)
-            to persistent storage for use with Resume() or ResumeAsync() upon a program restart.
-            It is strongly recommended that the FullPathFilename of the media file that is being uploaded is saved also so that a subsequent execution of the
-            program can compare the saved FullPathFilename value to the FullPathFilename of the media file that it has opened for uploading.
-            You do not need to seek to restart point in the ContentStream file.
-            </remarks>
-            <param name="uploadUri">VideosResource.InsertMediaUpload UploadUri property value that was saved to persistent storage during a prior execution.</param>
-        </member>
-        <member name="M:Google.Apis.Upload.ResumableUpload`1.ResumeAsync(System.Uri,System.Threading.CancellationToken)">
-            <summary>
-            Asynchronously resumes the upload from the last point it was interrupted. 
-            Use when the program was restarted and you wish to resume the upload that was in progress when the program was halted.
-            Implemented only for ContentStreams where .CanSeek is True.
-            </summary>
-            <remarks>
-            In your application's UploadSessionData Event Handler, store UploadUri.AbsoluteUri property value (resumable session URI string value)
-            to persistent storage for use with Resume() or ResumeAsync() upon a program restart.
-            It is strongly recommended that the FullPathFilename of the media file that is being uploaded is saved also so that a subsequent execution of the
-            program can compare the saved FullPathFilename value to the FullPathFilename of the media file that it has opened for uploading.
-            You do not need to seek to restart point in the ContentStream file.
-            </remarks>
-            <param name="uploadUri">VideosResource.InsertMediaUpload UploadUri property value that was saved to persistent storage during a prior execution.</param>
-            <param name="cancellationToken">A cancellation token to cancel the asynchronous operation.</param>
-        </member>
-        <member name="M:Google.Apis.Upload.ResumableUpload`1.UploadCoreAsync(System.Threading.CancellationToken)">
-            <summary>The core logic for uploading a stream. It is used by the upload and resume methods.</summary>
-        </member>
-        <member name="M:Google.Apis.Upload.ResumableUpload`1.InitializeUpload(System.Threading.CancellationToken)">
-            <summary>
-            Initializes the resumable upload by calling the resumable rest interface to get a unique upload location.
-            See https://developers.google.com/drive/manage-uploads#start-resumable for more details.
-            </summary>
-            <returns>
-            The unique upload location for this upload, returned in the Location header
-            </returns>
-        </member>
-        <member name="M:Google.Apis.Upload.ResumableUpload`1.ProcessResponse(System.Net.Http.HttpResponseMessage)">
-            <summary>
-            Process a response from the final upload chunk call.
-            </summary>
-            <param name="httpResponse">The response body from the final uploaded chunk.</param>
-        </member>
-        <member name="M:Google.Apis.Upload.ResumableUpload`1.SendNextChunkAsync(System.IO.Stream,System.Threading.CancellationToken)">
-            <summary>Uploads the next chunk of data to the server.</summary>
-            <returns><c>True</c> if the entire media has been completely uploaded.</returns>
-        </member>
-        <member name="M:Google.Apis.Upload.ResumableUpload`1.HandleResponse(System.Net.Http.HttpResponseMessage)">
-            <summary>Handles a media upload HTTP response.</summary>
-            <returns><c>True</c> if the entire media has been completely uploaded.</returns>
-        </member>
-        <member name="M:Google.Apis.Upload.ResumableUpload`1.MediaCompleted(System.Net.Http.HttpResponseMessage)">
-            <summary>A callback when the media was uploaded successfully.</summary>
-        </member>
-        <member name="M:Google.Apis.Upload.ResumableUpload`1.PrepareNextChunkUnknownSize(System.Net.Http.HttpRequestMessage,System.IO.Stream,System.Threading.CancellationToken)">
-            <summary>Prepares the given request with the next chunk in case the steam length is unknown.</summary>
-        </member>
-        <member name="M:Google.Apis.Upload.ResumableUpload`1.PrepareNextChunkKnownSize(System.Net.Http.HttpRequestMessage,System.IO.Stream,System.Threading.CancellationToken)">
-            <summary>Prepares the given request with the next chunk in case the steam length is known.</summary>
-        </member>
-        <member name="M:Google.Apis.Upload.ResumableUpload`1.GetNextByte(System.String)">
-            <summary>Returns the next byte index need to be sent.</summary>
-        </member>
-        <member name="M:Google.Apis.Upload.ResumableUpload`1.GetContentRangeHeader(System.Int64,System.Int64)">
-            <summary>
-            Build a content range header of the form: "bytes X-Y/T" where:
-            <list type="">
-            <item>X is the first byte being sent.</item>
-            <item>Y is the last byte in the range being sent (inclusive).</item>
-            <item>T is the total number of bytes in the range or * for unknown size.</item>
-            </list>
-            </summary>
-            <remarks>
-            See: RFC2616 HTTP/1.1, Section 14.16 Header Field Definitions, Content-Range
-            http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.16
-            </remarks>
-            <param name="chunkStart">Start of the chunk.</param>
-            <param name="chunkSize">Size of the chunk being sent.</param>
-            <returns>The content range header value.</returns>
+        <member name="M:Google.Apis.Upload.ResumableUpload`1.InitiateSessionAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
         </member>
         <member name="M:Google.Apis.Upload.ResumableUpload`1.CreateInitializeRequest">
             <summary>Creates a request to initialize a request.</summary>
@@ -1113,6 +1206,44 @@
         </member>
         <member name="M:Google.Apis.Upload.ResumableUpload`2.ProcessResponse(System.Net.Http.HttpResponseMessage)">
             <summary>Process the response body </summary>
+        </member>
+        <member name="T:Google.Apis.Upload.ResumableUploadOptions">
+            <summary>
+            Options for <see cref="T:Google.Apis.Upload.ResumableUpload"/> operations.
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Upload.ResumableUploadOptions.HttpClient">
+            <summary>
+            Gets or sets the HTTP client to use when starting the upload sessions and uploading data.
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Upload.ResumableUploadOptions.ModifySessionInitiationRequest">
+            <summary>
+            Gets or sets the callback for modifying the session initiation request.
+            See https://cloud.google.com/storage/docs/json_api/v1/how-tos/resumable-upload#start-resumable for more information.
+            </summary>
+            <remarks>
+            Note: If these options are used with a <see cref="T:Google.Apis.Upload.ResumableUpload"/> created using <see cref="M:Google.Apis.Upload.ResumableUpload.CreateFromUploadUri(System.Uri,System.IO.Stream,Google.Apis.Upload.ResumableUploadOptions)"/>,
+            this property will be ignored as the session has already been initiated.
+            </remarks>
+        </member>
+        <member name="P:Google.Apis.Upload.ResumableUploadOptions.Serializer">
+            <summary>
+            Gets or sets the serializer to use when parsing error responses.
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Upload.ResumableUploadOptions.ServiceName">
+            <summary>
+            Gets or sets the name of the service performing the upload.
+            </summary>
+            <remarks>
+            This will be used to set the <see cref="P:Google.GoogleApiException.ServiceName"/> in the event of an error.
+            </remarks>
+        </member>
+        <member name="P:Google.Apis.Upload.ResumableUploadOptions.ConfigurableHttpClient">
+            <summary>
+            Gets the <see cref="P:Google.Apis.Upload.ResumableUploadOptions.HttpClient"/> as a <see cref="T:Google.Apis.Http.ConfigurableHttpClient"/> if it is an instance of one.
+            </summary>
         </member>
     </members>
 </doc>
