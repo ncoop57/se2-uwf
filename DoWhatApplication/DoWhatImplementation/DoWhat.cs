@@ -5,8 +5,7 @@ using Google.Apis.Services;
 using System.IO;
 using Google.Apis.CloudSpeechAPI.v1beta1.Data;
 using System.Collections.Generic;
-using opennlp.tools;
-using opennlp.tools.postag;
+
 
 namespace DoWhatImplementation
 {
@@ -139,7 +138,7 @@ namespace DoWhatImplementation
             });
         }
 
-        public void ProcessViaNLP(string sentence)
+        /*public void ProcessViaNLP(string sentence)
         {
 
             string modelPath = @"..\..\..\NLPModels\Models\";
@@ -181,7 +180,7 @@ namespace DoWhatImplementation
 
             return false;
 
-        }
+        }*/
 
     }
 }

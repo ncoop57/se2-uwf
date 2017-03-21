@@ -95,7 +95,7 @@ namespace DoWhatapp
             dowhatobject.setAudioFileLocation(fileName);
             dowhatobject.SendToSpeech();
             string inputString = dowhatobject.getSTTString();
-            dowhatobject.ProcessViaNLP(inputString);
+            /*dowhatobject.ProcessViaNLP(inputString);
             string inputVerb = dowhatobject.getVerb();
             string inputSubject = dowhatobject.getSubject();
             string openVerb = "open";
@@ -103,7 +103,7 @@ namespace DoWhatapp
             if (result)
             {
                 openApplication(inputSubject);
-            }
+            }*/
 
 
 		}

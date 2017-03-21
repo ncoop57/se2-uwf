@@ -1,45 +1,3 @@
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\DoWhatapp.dll
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\DoWhatapp.pdb
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\com.companyname.dowhatapp.apk
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\com.companyname.dowhatapp-Signed.apk
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Xamarin.Android.Support.v4.dll
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Xamarin.Android.Support.v7.AppCompat.dll
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\DoWhatapp.csprojResolveAssemblyReference.cache
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\DoWhatapp.dll
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\DoWhatapp.pdb
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\android\bin\com.companyname.dowhatapp.apk
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\res\layout\main.xml
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\res\values\strings.xml
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\res\mipmap-hdpi\icon.png
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\res\mipmap-mdpi\icon.png
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\res\mipmap-xhdpi\icon.png
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\res\mipmap-xxhdpi\icon.png
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\res\mipmap-xxxhdpi\icon.png
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\R.cs.flag
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\uploadflags.txt
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\DoWhatapp.dll.mdb
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Java.Interop.dll.mdb
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Mono.Android.dll.mdb
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\mscorlib.dll.mdb
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\System.ComponentModel.Composition.dll.mdb
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\System.Core.dll.mdb
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\System.dll.mdb
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\System.Net.Http.dll.mdb
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\System.Runtime.Serialization.dll.mdb
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\System.ServiceModel.Internals.dll.mdb
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\System.Xml.dll.mdb
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\android\assets\DoWhatapp.dll.mdb
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\android\assets\Java.Interop.dll.mdb
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\android\assets\Mono.Android.dll.mdb
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\android\assets\mscorlib.dll.mdb
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\android\assets\System.ComponentModel.Composition.dll.mdb
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\android\assets\System.Core.dll.mdb
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\android\assets\System.dll.mdb
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\android\assets\System.Net.Http.dll.mdb
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\android\assets\System.Runtime.Serialization.dll.mdb
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\android\assets\System.ServiceModel.Internals.dll.mdb
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\android\assets\System.Xml.dll.mdb
-C:\Users\natha\Google Drive\College\UWF\CEN3032 Software Engineering 2\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\DoWhatapp.dll.mdb
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\DoWhatapp.csprojResolveAssemblyReference.cache
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\XbdMerge\Xamarin.Android.Support.Compat.dll
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\XbdMerge\Xamarin.Android.Support.Core.UI.dll
@@ -47,4 +5,63 @@ C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\XbdMerge\Xamarin.Android.Support.Media.Compat.dll
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\XbdMerge\Xamarin.Android.Support.Fragment.dll
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\XbdMerge\Xamarin.Android.Support.v4.dll
+C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\XbdMerge\Xamarin.Android.Support.Vector.Drawable.dll
+C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\XbdMerge\Xamarin.Android.Support.Animated.Vector.Drawable.dll
 C:\Users\Loco3\Desktop\COLLEGE\SPRING2017\CEN3032\Group_Project\GroupProjectCode\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\XbdMerge\Xamarin.Android.Support.v7.AppCompat.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\DoWhatapp.dll.config
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\DoWhatapp.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\DoWhatapp.pdb
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\com.companyname.dowhatapp.apk
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\com.companyname.dowhatapp-Signed.apk
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\DoWhatImplementation.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Xamarin.Android.Support.Animated.Vector.Drawable.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Xamarin.Android.Support.Compat.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Xamarin.Android.Support.Core.UI.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Xamarin.Android.Support.Core.Utils.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Xamarin.Android.Support.Fragment.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Xamarin.Android.Support.Media.Compat.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Xamarin.Android.Support.v4.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Xamarin.Android.Support.v7.AppCompat.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Xamarin.Android.Support.Vector.Drawable.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Google.Apis.CloudSpeechAPI.v1beta1.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Google.Apis.Auth.PlatformServices.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Google.Apis.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Google.Apis.Core.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Google.Apis.Auth.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Google.Apis.PlatformServices.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\DoWhatImplementation.pdb
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Google.Apis.CloudSpeechAPI.v1beta1.pdb
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Google.Apis.CloudSpeechAPI.v1beta1.xml
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Google.Apis.Auth.PlatformServices.pdb
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Google.Apis.Auth.PlatformServices.xml
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Google.Apis.pdb
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Google.Apis.xml
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Google.Apis.Core.pdb
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Google.Apis.Core.xml
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Google.Apis.Auth.pdb
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Google.Apis.Auth.xml
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Google.Apis.PlatformServices.pdb
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\Google.Apis.PlatformServices.xml
+C:\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\XbdMerge\Xamarin.Android.Support.Compat.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\XbdMerge\Xamarin.Android.Support.Core.UI.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\XbdMerge\Xamarin.Android.Support.Core.Utils.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\XbdMerge\Xamarin.Android.Support.Media.Compat.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\XbdMerge\Xamarin.Android.Support.Fragment.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\XbdMerge\Xamarin.Android.Support.v4.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\XbdMerge\Xamarin.Android.Support.Vector.Drawable.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\XbdMerge\Xamarin.Android.Support.Animated.Vector.Drawable.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\XbdMerge\Xamarin.Android.Support.v7.AppCompat.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\DoWhatapp.dll
+C:\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\DoWhatapp.pdb
+C:\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\android\bin\com.companyname.dowhatapp.apk
+C:\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\res\layout\main.xml
+C:\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\res\values\strings.xml
+C:\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\res\mipmap-hdpi\icon.png
+C:\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\res\mipmap-mdpi\icon.png
+C:\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\res\mipmap-xhdpi\icon.png
+C:\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\res\mipmap-xxhdpi\icon.png
+C:\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\res\mipmap-xxxhdpi\icon.png
+C:\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\R.cs.flag
+C:\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\uploadflags.txt
+C:\se2-uwf\DoWhatApplication\DoWhatapp\obj\Debug\DoWhatapp.dll.mdb
+C:\se2-uwf\DoWhatApplication\DoWhatapp\bin\Debug\DoWhatapp.dll.mdb
