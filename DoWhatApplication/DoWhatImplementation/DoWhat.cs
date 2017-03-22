@@ -5,7 +5,7 @@ using Google.Apis.Services;
 using System.IO;
 using Google.Apis.CloudSpeechAPI.v1beta1.Data;
 using System.Collections.Generic;
-
+using System.Linq;
 
 namespace DoWhatImplementation
 {
@@ -18,6 +18,10 @@ namespace DoWhatImplementation
         private String verb;
         private String subject;
         private String target;
+
+        private List<string> commands = "open play search".Split(' ').ToList();
+        private List<string> skipWords;
+        
         //coded agl11
         public String getAudioFileLocation()
         {
@@ -77,6 +81,20 @@ namespace DoWhatImplementation
             this.verb = "";
             this.subject = "";
             this.target = "";
+
+            string line;
+            skipWords = new List<string>();
+
+            // Read the file and display it line by line.
+            System.IO.StreamReader file =
+               new System.IO.StreamReader("../../../stopwords.txt");
+            while ((line = file.ReadLine()) != null)
+            {
+                skipWords.Add(line);
+            }
+
+            file.Close();
+
         }
         //coded agl11
         public void SendToSpeech()
@@ -138,49 +156,53 @@ namespace DoWhatImplementation
             });
         }
 
-        /*public void ProcessViaNLP(string sentence)
+        public void ProcessViaNLP(string input)
         {
 
-            string modelPath = @"..\..\..\NLPModels\Models\";
-            java.io.FileInputStream modelInpStream = new java.io.FileInputStream(modelPath + "en-pos-perceptron.bin");
+            input = input.ToLower();
 
-            POSModel model = new POSModel(modelInpStream);
-            POSTaggerME tagger = new POSTaggerME(model);
-
-            string[] words = sentence.Split(' ');
-            string[] tags = tagger.tag(words);
-
-            for (int i = 0; i < words.Length; i++)
+            foreach (string word in commands)
             {
 
-                if (this.isNoun(tags[i]))
-                    this.setSubject(words[i]);
-                else if (this.isVerb(tags[i]))
-                    this.setVerb(words[i]);
+                if (input.Contains(word))
+                {
+
+                    input = string.Join(" ", input.Split(' ').Except(commands).Except(skipWords));
+
+                    this.setVerb(word);
+                    this.setSubject(input);
+
+                    this.execute(word, input);
+
+                }
 
             }
 
         }
 
-        public bool isNoun(string token)
+        public void execute(string command, string input)
         {
 
-            if (token.Contains("NN"))
-                return true;
+            if (command.Equals("open"))
+            {
 
-            return false;
+                Console.WriteLine("Opening " + input);
+
+            }
+            else if (command.Equals("play"))
+            {
+
+                Console.WriteLine("Playing " + input);
+
+            }
+            else if (command.Equals("search"))
+            {
+
+                Console.WriteLine("Searching " + input);
+
+            }
 
         }
-
-        public bool isVerb(string token)
-        {
-
-            if (token.Contains("VB"))
-                return true;
-
-            return false;
-
-        }*/
 
     }
 }
