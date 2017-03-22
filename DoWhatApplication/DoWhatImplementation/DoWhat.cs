@@ -71,7 +71,7 @@ namespace DoWhatImplementation
             this.subject = "";
             this.target = "";
             string line;
-            skipWords = new List<string>();
+           /* skipWords = new List<string>();
             // Read the file and display it line by line coded nac33
             System.IO.StreamReader file =
                new System.IO.StreamReader("../../../stopwords.txt");
@@ -79,7 +79,7 @@ namespace DoWhatImplementation
             {
                 skipWords.Add(line);
             }
-            file.Close();
+            file.Close();*/
         }
         //coded agl11
         public void SendToSpeech()
@@ -121,20 +121,27 @@ namespace DoWhatImplementation
         //static method to create a client for authentication coded agl11
         static public CloudSpeechAPIService CreateAuthorizedClient()
         {
-            GoogleCredential credential = GoogleCredential.GetApplicationDefaultAsync().Result;
-            // Inject the Cloud Storage scope if required, per API tutorials
-            if (credential.IsCreateScopedRequired)
+
+            return new CloudSpeechAPIService(new BaseClientService.Initializer
             {
-                credential = credential.CreateScoped(new[]
-                {
-                    CloudSpeechAPIService.Scope.CloudPlatform
-                });
-            }
-            return new CloudSpeechAPIService(new BaseClientService.Initializer()
-            {
-                HttpClientInitializer = credential,
-                ApplicationName = "DoWhat Application Audio",
+                ApplicationName = "DoWhat",
+                ApiKey = "AIzaSyBohQs4EQQc9EtVyWTCS1DWVdAOdqFWnaA",
             });
+
+            /* GoogleCredential credential = GoogleCredential.GetApplicationDefaultAsync().Result;
+             // Inject the Cloud Storage scope if required, per API tutorials
+             if (credential.IsCreateScopedRequired)
+             {
+                 credential = credential.CreateScoped(new[]
+                 {
+                     CloudSpeechAPIService.Scope.CloudPlatform
+                 });
+             }
+             return new CloudSpeechAPIService(new BaseClientService.Initializer()
+             {
+                 HttpClientInitializer = credential,
+                 ApplicationName = "DoWhat Application Audio",
+             });*/
         }
         //NLP coded nac33
         public void ProcessViaNLP(string input)
@@ -151,6 +158,7 @@ namespace DoWhatImplementation
                 }
             }
         }
+
         //coded nac33
         public void execute(string command, string input)
         {
@@ -167,6 +175,7 @@ namespace DoWhatImplementation
                 Console.WriteLine("Searching " + input);
             }
         }
+
     }
 }
 
