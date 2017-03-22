@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using Android.Media;
-// Set up RECORD_AUDIO permission in the AndroidManifest.xml before use.
+// Set up RECORD_AUDIO permission in the AndroidManifest.xml before use. - coded by julien
 namespace DoWhatapp
 {
 	public class Audio

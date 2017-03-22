@@ -82,7 +82,7 @@ namespace DoWhatImplementation
             file.Close();*/
         }
         //coded agl11
-        public void SendToSpeech()
+        public void SendToSpeech(Stream file)
         {
             IList<string> list = new List<string>();
             list.Add("Wink Hub");
@@ -92,7 +92,7 @@ namespace DoWhatImplementation
             String inputFileString = this.getAudioFileLocation();
             String outputProcessedString = "";
             //authentication coded agl11
-            CloudSpeechAPIService service = CreateAuthorizedClient();
+            CloudSpeechAPIService service = CreateAuthorizedClient(file);
             //construction of request coded agl11
             SyncRecognizeRequest request = new Google.Apis.CloudSpeechAPI.v1beta1.Data.SyncRecognizeRequest()
             {
@@ -119,16 +119,16 @@ namespace DoWhatImplementation
 
         }
         //static method to create a client for authentication coded agl11
-        static public CloudSpeechAPIService CreateAuthorizedClient()
+        static public CloudSpeechAPIService CreateAuthorizedClient(Stream file)
         {
+			//return new CloudSpeechAPIService(new BaseClientService.Initializer
+			//{
+			//  ApplicationName = "DoWhat",
+			//ApiKey = "AIzaSyBohQs4EQQc9EtVyWTCS1DWVdAOdqFWnaA",
+			//});
 
-            return new CloudSpeechAPIService(new BaseClientService.Initializer
-            {
-                ApplicationName = "DoWhat",
-                ApiKey = "AIzaSyBohQs4EQQc9EtVyWTCS1DWVdAOdqFWnaA",
-            });
-
-            /* GoogleCredential credential = GoogleCredential.GetApplicationDefaultAsync().Result;
+			//GoogleCredential credential = GoogleCredential.GetApplicationDefaultAsync().Result;
+			GoogleCredential credential = GoogleCredential.FromStream(file);
              // Inject the Cloud Storage scope if required, per API tutorials
              if (credential.IsCreateScopedRequired)
              {
@@ -141,7 +141,7 @@ namespace DoWhatImplementation
              {
                  HttpClientInitializer = credential,
                  ApplicationName = "DoWhat Application Audio",
-             });*/
+             });
         }
         //NLP coded nac33
         public void ProcessViaNLP(string input)
