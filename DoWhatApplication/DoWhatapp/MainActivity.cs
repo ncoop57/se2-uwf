@@ -17,6 +17,7 @@ using Android.Content.PM;
 using Android.Content;
 using Android.Content.Res;
 using DoWhatImplementation;
+
 //using Android.Runtime;
 //using Android.Views;
 //using Android.Media;
@@ -31,7 +32,7 @@ namespace DoWhatapp
 		Button record = null;
 		bool isRecording = false;
 		string fileName = null;
-		bool audioRecorded = false;
+		//bool audioRecorded = false;
 
 		private void onRecord(bool start)
 		{
@@ -98,22 +99,22 @@ namespace DoWhatapp
             record.Enabled = true;
 			record.Click += (object sender, EventArgs e) =>
 			{
-				audioRecorded = true;
+				//audioRecorded = true;
 				isRecording = !isRecording;
 				onRecord(isRecording);
-				if (!isRecording)
+				if (isRecording == false)
 				{
 					dowhatobject.setAudioFileLocation(fileName);
-					dowhatobject.SendToSpeech(fs);
-                    dowhatobject.ProcessViaNLP(dowhatobject.getSTTString());
-                    string inputVerb = dowhatobject.getVerb();
-                    string inputSubject = dowhatobject.getSubject();
-                    string openVerb = "open";
-                    bool result = inputVerb.Equals(openVerb, StringComparison.Ordinal);
-                    if (result)
-                    {
-                        openApplication(inputSubject);
-                    }
+					//dowhatobject.SendToSpeech(fs);
+                    //dowhatobject.ProcessViaNLP(dowhatobject.getSTTString());
+                    //string inputVerb = dowhatobject.getVerb();
+                    //string inputSubject = dowhatobject.getSubject();
+                    //string openVerb = "open";
+                    //bool result = inputVerb.Equals(openVerb, StringComparison.Ordinal);
+                    //if (result)
+                    //{
+                    //    openApplication(inputSubject);
+                    //}
                 }
 			};
 			
