@@ -212,6 +212,8 @@ C:\Users\natha\Documents\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debu
 C:\Users\natha\Documents\se2-uwf\DoWhatApplication\DoWhatImplementation\obj\Debug\DoWhatImplementation.csprojResolveAssemblyReference.cache
 C:\Users\natha\Documents\se2-uwf\DoWhatApplication\DoWhatImplementation\obj\Debug\DoWhatImplementation.dll
 C:\Users\natha\Documents\se2-uwf\DoWhatApplication\DoWhatImplementation\obj\Debug\DoWhatImplementation.pdb
+C:\Users\natha\Documents\se2-uwf\DoWhatApplication\DoWhatImplementation\obj\Debug\DoWhatImplementation.dll.mdb
+C:\Users\natha\Documents\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\DoWhatImplementation.dll.mdb
 C:\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\DoWhatImplementation.dll.config
 C:\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\DoWhatImplementation.dll
 C:\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\DoWhatImplementation.pdb
@@ -240,10 +242,7 @@ C:\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\Google.Apis.Platform
 C:\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\log4net.xml
 C:\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\Newtonsoft.Json.xml
 C:\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\Zlib.Portable.xml
-C:\se2-uwf\DoWhatApplication\DoWhatImplementation\obj\Debug\DoWhatImplementation.csprojResolveAssemblyReference.cache
 C:\se2-uwf\DoWhatApplication\DoWhatImplementation\obj\Debug\DoWhatImplementation.dll
 C:\se2-uwf\DoWhatApplication\DoWhatImplementation\obj\Debug\DoWhatImplementation.pdb
 C:\se2-uwf\DoWhatApplication\DoWhatImplementation\obj\Debug\DoWhatImplementation.dll.mdb
 C:\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\DoWhatImplementation.dll.mdb
-C:\Users\natha\Documents\se2-uwf\DoWhatApplication\DoWhatImplementation\obj\Debug\DoWhatImplementation.dll.mdb
-C:\Users\natha\Documents\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\DoWhatImplementation.dll.mdb

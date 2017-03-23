@@ -12,60 +12,60 @@ namespace DoWhatImplementation
     public class DoWhat
     {
         //instance variables coded agl11 and nac33
-        private String audioFileLocation;   //(.flac)
-        private String STTString;
-        private String verb;
-        private String subject;
-        private String target;
+        private string audioFileLocation;   //(.flac)
+        private string STTString;
+        private string verb;
+        private string subject;
+        private string target;
         private List<string> commands = "open play search".Split(' ').ToList();
         private List<string> skipWords;
         
         //coded agl11
-        public String getAudioFileLocation()
+        public string getAudioFileLocation()
         {
             return this.audioFileLocation;
         }
         //coded agl11
-        public void setAudioFileLocation(String inputAudioFileLocation)
+        public void setAudioFileLocation(string inputAudioFileLocation)
         {
             this.audioFileLocation = inputAudioFileLocation;
         }
-        public String getSTTString()
+        public string getSTTString()
         {
             return this.STTString;
         }
-        public void setSTTString(String inputString)
+        public void setSTTString(string inputString)
         {
             this.STTString = inputString;
         }
-        public String getVerb()
+        public string getVerb()
         {
             return this.verb;
         }
-        public void setVerb(String inputString)
+        public void setVerb(string inputString)
         {
             this.verb = inputString;
         }
-        public String getSubject()
+        public string getSubject()
         {
             return this.subject;
         }
-        public void setSubject(String inputString)
+        public void setSubject(string inputString)
         {
             this.subject = inputString;
         }
-        public String getTarget()
+        public string getTarget()
         {
             return this.target;
         }
-        public void setTarget(String inputString)
+        public void setTarget(string inputString)
         {
             this.target = inputString;
         }
         //default constructor builds with null coded agl11 and nac33
         public DoWhat()
         {
-            //audioFile = file from record;
+            this.audioFileLocation = "";
             this.STTString = "";
             this.verb = "";
             this.subject = "";
@@ -89,8 +89,8 @@ namespace DoWhatImplementation
             list.Add("Todist");
             SpeechContext context = new SpeechContext();
             context.Phrases = list;
-            String inputFileString = this.getAudioFileLocation();
-            String outputProcessedString = "";
+            string inputFileString = this.getAudioFileLocation();
+            string outputProcessedString = "";
             //authentication coded agl11
             CloudSpeechAPIService service = CreateAuthorizedClient(file);
             //construction of request coded agl11
