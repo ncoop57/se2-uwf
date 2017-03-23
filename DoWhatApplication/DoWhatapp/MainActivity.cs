@@ -31,6 +31,7 @@ namespace DoWhatapp
 		Button record = null;
 		bool isRecording = false;
 		string fileName = null;
+		bool audioRecorded = false;
 
 		private void onRecord(bool start)
 		{
@@ -77,7 +78,9 @@ namespace DoWhatapp
 		/* runs the app */
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
+			DoWhat dowhatobject = new DoWhat();
 			assets = this.Assets;
+			Stream fs = ReadFromAssets();
 			base.OnCreate(savedInstanceState);
 
 			// Set our view from the "main" layout resource
@@ -96,14 +99,18 @@ namespace DoWhatapp
 			record.Enabled = true;
 			record.Click += (object sender, EventArgs e) =>
 			{
+				audioRecorded = true;
 				isRecording = !isRecording;
 				onRecord(isRecording);
+				if (!isRecording)
+				{
+					dowhatobject.setAudioFileLocation(fileName);
+					dowhatobject.SendToSpeech(fs);
+				}
 			};
-            //createDoWhat object
-            DoWhat dowhatobject = new DoWhat();
-            dowhatobject.setAudioFileLocation(fileName);
-			dowhatobject.SendToSpeech(ReadFromAssets());
-            string inputString = dowhatobject.getSTTString();
+			//createDoWhat object
+
+            //string inputString = dowhatobject.getSTTString();
             /*dowhatobject.ProcessViaNLP(inputString);
             string inputVerb = dowhatobject.getVerb();
             string inputSubject = dowhatobject.getSubject();
