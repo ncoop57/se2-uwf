@@ -165,6 +165,7 @@
   <ItemGroup>
     <AndroidAsset Include="Assets\DoWhat-65e8c7b1824e.json" />
     <AndroidAsset Include="Assets\AboutAssets.txt" />
+    <AndroidAsset Include="Assets\stopwords.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

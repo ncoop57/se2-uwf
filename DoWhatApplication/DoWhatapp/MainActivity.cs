@@ -7,8 +7,8 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
-//using System.Threading;
-//using System.Threading.Tasks;
+using System.Threading;
+using System.Threading.Tasks;
 
 using Android.App;
 using Android.Widget;
@@ -18,9 +18,9 @@ using Android.Content;
 using Android.Content.Res;
 using DoWhatImplementation;
 
-//using Android.Runtime;
-//using Android.Views;
-//using Android.Media;
+using Android.Runtime;
+using Android.Views;
+using Android.Media;
 // This class allows for the app to run. This will be cleaned up as I do more Android stuff - coded by julien
 namespace DoWhatapp
 {
@@ -34,16 +34,19 @@ namespace DoWhatapp
 		string fileName = null;
 		//bool audioRecorded = false;
 
-		private void onRecord(bool start)
+		async Task Record()
 		{
-			if (start)
-			{
-				audio.RecordAudioCompressed(fileName);
-			}
-			else
-			{
-				audio.Stop();
-			}
+			//if (start)
+			//{
+			audio.setFilePath(fileName);
+			await audio.StartAsync();
+			//audio.RecordAudioCompressed(fileName);
+			//	}
+			//else
+			//{
+			//audio.StopCom();
+			//	audio.Stop();
+			//	}
 		}
 
 		// Creates list of installed app package names - coded by matthew
@@ -71,12 +74,12 @@ namespace DoWhatapp
 
         }
 
-		public Stream ReadFromAssets() 
+		public System.IO.Stream ReadFromAssets() 
 		{
 			return assets.Open("DoWhat-65e8c7b1824e.json");
 		}
 
-        public Stream ReadStopWords()
+        public System.IO.Stream ReadStopWords()
         {
             return assets.Open("stopwords.txt");
         }
@@ -85,7 +88,7 @@ namespace DoWhatapp
         protected override void OnCreate(Bundle savedInstanceState)
 		{
 			assets = this.Assets;
-			Stream fs = ReadFromAssets();
+			System.IO.Stream fs = ReadFromAssets();
 			base.OnCreate(savedInstanceState);
 
 			// Set our view from the "main" layout resource
@@ -95,7 +98,7 @@ namespace DoWhatapp
 
 			// Record to our directory
 			fileName = GetExternalFilesDir(null).AbsolutePath;
-			fileName += "/audiotest.awb";
+			fileName += "/audiotest.wav";
 
 
 			//Record button
@@ -104,23 +107,30 @@ namespace DoWhatapp
             record.Enabled = true;
 			record.Click += (object sender, EventArgs e) =>
 			{
-				//audioRecorded = true;
 				isRecording = !isRecording;
-				onRecord(isRecording);
 				if (isRecording == false)
 				{
+					audio.Stop();
+					audio.RecordingStateChanged += (recording) =>
+					{
+						audio.RecordingStateChanged = null;
+					};
 					dowhatobject.setAudioFileLocation(fileName);
-					//dowhatobject.SendToSpeech(fs);
-                    //dowhatobject.ProcessViaNLP(dowhatobject.getSTTString());
-                    //string inputVerb = dowhatobject.getVerb();
-                    //string inputSubject = dowhatobject.getSubject();
-                    //string openVerb = "open";
-                    //bool result = inputVerb.Equals(openVerb, StringComparison.Ordinal);
-                    //if (result)
-                    //{
-                    //    openApplication(inputSubject);
-                    //}
-                }
+					dowhatobject.SendToSpeech(fs);
+					//dowhatobject.ProcessViaNLP(dowhatobject.getSTTString());
+					//string inputVerb = dowhatobject.getVerb();
+					//string inputSubject = dowhatobject.getSubject();
+					//string openVerb = "open";
+					//bool result = inputVerb.Equals(openVerb, StringComparison.Ordinal);
+					//if (result)
+					//{
+					//	openApplication(inputSubject);
+					//}
+				}
+				else
+				{
+					Record();
+				}
 			};
 			
 
