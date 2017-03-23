@@ -8,7 +8,7 @@ namespace UnitTest
     public class NLPUnitTests
     {
 
-        /*[TestMethod]
+        [TestMethod]
         public void TestCorrectSubjectIsParsedFromTheUsersCommand()
         {
 
@@ -39,7 +39,7 @@ namespace UnitTest
             // Assert
             Assert.AreEqual(sut.getVerb(), "open", true);
 
-        }*/
+        }
 
     }
 }

@@ -18,7 +18,7 @@ namespace DoWhatImplementation
         private string subject;
         private string target;
         private List<string> commands = "open play search".Split(' ').ToList();
-        private List<string> skipWords;
+        private List<string> skipWords = "up down a and".Split(' ').ToList();
         
         //coded agl11
         public string getAudioFileLocation()
@@ -70,8 +70,8 @@ namespace DoWhatImplementation
             this.verb = "";
             this.subject = "";
             this.target = "";
-            string line;
-           /* skipWords = new List<string>();
+            /*string line;
+            skipWords = new List<string>();
             // Read the file and display it line by line coded nac33
             System.IO.StreamReader file =
                new System.IO.StreamReader("../../../stopwords.txt");

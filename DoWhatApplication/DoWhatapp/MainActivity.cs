@@ -78,7 +78,6 @@ namespace DoWhatapp
 		/* runs the app */
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
-			DoWhat dowhatobject = new DoWhat();
 			assets = this.Assets;
 			Stream fs = ReadFromAssets();
 			base.OnCreate(savedInstanceState);
@@ -95,8 +94,8 @@ namespace DoWhatapp
 
 			//Record button
 			record = FindViewById<Button>(Resource.Id.record);
-
-			record.Enabled = true;
+            DoWhat dowhatobject = new DoWhat();
+            record.Enabled = true;
 			record.Click += (object sender, EventArgs e) =>
 			{
 				audioRecorded = true;
@@ -106,20 +105,18 @@ namespace DoWhatapp
 				{
 					dowhatobject.setAudioFileLocation(fileName);
 					dowhatobject.SendToSpeech(fs);
-				}
+                    dowhatobject.ProcessViaNLP(dowhatobject.getSTTString());
+                    string inputVerb = dowhatobject.getVerb();
+                    string inputSubject = dowhatobject.getSubject();
+                    string openVerb = "open";
+                    bool result = inputVerb.Equals(openVerb, StringComparison.Ordinal);
+                    if (result)
+                    {
+                        openApplication(inputSubject);
+                    }
+                }
 			};
-			//createDoWhat object
-
-            //string inputString = dowhatobject.getSTTString();
-            /*dowhatobject.ProcessViaNLP(inputString);
-            string inputVerb = dowhatobject.getVerb();
-            string inputSubject = dowhatobject.getSubject();
-            string openVerb = "open";
-            bool result = inputVerb.Equals(openVerb, StringComparison.Ordinal);
-            if (result)
-            {
-                openApplication(inputSubject);
-            }*/
+			
 
 
 		}
