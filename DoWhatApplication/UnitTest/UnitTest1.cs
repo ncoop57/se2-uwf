@@ -20,7 +20,8 @@ namespace UnitTestDoWhatImplementation
         {
             //arrange
             String inputFile = @"..\..\..\resources\audio.raw";
-            DoWhat sut = new DoWhat();
+            Stream file = new FileStream("../../../stopwords.txt", FileMode.Open);
+            DoWhat sut = new DoWhat(file);
             sut.setAudioFileLocation(inputFile);
             string fileString = @"..\..\..\resources\DoWhat-65e8c7b1824e.json";
             byte[] byteArray = Encoding.ASCII.GetBytes(fileString);
@@ -48,7 +49,8 @@ namespace UnitTestDoWhatImplementation
         {
             //arrange
             String inputFile = @"..\..\..\resources\audio.raw";
-            DoWhat sut = new DoWhat();
+            Stream file = new FileStream("../../../stopwords.txt", FileMode.Open);
+            DoWhat sut = new DoWhat(file);
             //act
             sut.setAudioFileLocation(inputFile);
             String result = sut.getAudioFileLocation();
@@ -61,7 +63,8 @@ namespace UnitTestDoWhatImplementation
         {
             //arrange
             string testVerb = "open";
-            DoWhat sut = new DoWhat();
+            Stream file = new FileStream("../../../stopwords.txt", FileMode.Open);
+            DoWhat sut = new DoWhat(file);
             //act
             sut.setVerb(testVerb);
             string result = sut.getVerb();
@@ -74,7 +77,8 @@ namespace UnitTestDoWhatImplementation
         {
             //arrange
             string testSubject = "Todoist";
-            DoWhat sut = new DoWhat();
+            Stream file = new FileStream("../../../stopwords.txt", FileMode.Open);
+            DoWhat sut = new DoWhat(file);
             //act
             sut.setSubject(testSubject);
             string result = sut.getSubject();

@@ -63,23 +63,21 @@ namespace DoWhatImplementation
             this.target = inputString;
         }
         //default constructor builds with null coded agl11 and nac33
-        public DoWhat()
+        public DoWhat(Stream file)
         {
             this.audioFileLocation = "";
             this.STTString = "";
             this.verb = "";
             this.subject = "";
             this.target = "";
-            /*string line;
+            string line;
             skipWords = new List<string>();
             // Read the file and display it line by line coded nac33
-            System.IO.StreamReader file =
-               new System.IO.StreamReader("../../../stopwords.txt");
-            while ((line = file.ReadLine()) != null)
+            while ((line = new StreamReader(file).ReadLine()) != null)
             {
                 skipWords.Add(line);
             }
-            file.Close();*/
+            file.Close();
         }
         //coded agl11
         public void SendToSpeech(Stream file)

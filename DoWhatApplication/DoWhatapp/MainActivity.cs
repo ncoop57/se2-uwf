@@ -76,8 +76,13 @@ namespace DoWhatapp
 			return assets.Open("DoWhat-65e8c7b1824e.json");
 		}
 
-		/* runs the app */
-		protected override void OnCreate(Bundle savedInstanceState)
+        public Stream ReadStopWords()
+        {
+            return assets.Open("stopwords.txt");
+        }
+
+        /* runs the app */
+        protected override void OnCreate(Bundle savedInstanceState)
 		{
 			assets = this.Assets;
 			Stream fs = ReadFromAssets();
@@ -95,7 +100,7 @@ namespace DoWhatapp
 
 			//Record button
 			record = FindViewById<Button>(Resource.Id.record);
-            DoWhat dowhatobject = new DoWhat();
+            DoWhat dowhatobject = new DoWhat(ReadStopWords());
             record.Enabled = true;
 			record.Click += (object sender, EventArgs e) =>
 			{

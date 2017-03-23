@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DoWhatImplementation;
+using System.IO;
 
 namespace UnitTest
 {
@@ -13,7 +14,8 @@ namespace UnitTest
         {
 
             // Arrange
-            DoWhat sut = new DoWhat();
+            Stream file = new FileStream("../../../stopwords.txt", FileMode.Open);
+            DoWhat sut = new DoWhat(file);
             string userCommand = "Open Gmail";
             sut.setSTTString(userCommand);
             string STTString = sut.getSTTString();
@@ -31,8 +33,10 @@ namespace UnitTest
         {
 
             // Arrange
+            Stream file = new FileStream("../../../stopwords.txt", FileMode.Open);
+            DoWhat sut = new DoWhat(file);
             string userCommand = "Open Gmail";
-            DoWhat sut = new DoWhat();
+
             // Act
             sut.ProcessViaNLP(userCommand);
 
