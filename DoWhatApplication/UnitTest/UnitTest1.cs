@@ -14,7 +14,7 @@ namespace UnitTestDoWhatImplementation
     public class UnitTest1
     {
 
-        /*[TestMethod]
+        [TestMethod]
         //coded by agl11
         public void TestSendToSpeech()
         {
@@ -22,15 +22,15 @@ namespace UnitTestDoWhatImplementation
             String inputFile = @"..\..\..\resources\audio.raw";
             DoWhat sut = new DoWhat();
             sut.setAudioFileLocation(inputFile);
-            string fileString = "DoWhat-65e8c7b1824e.json";
+            string fileString = @"..\..\..\resources\DoWhat-65e8c7b1824e.json";
             byte[] byteArray = Encoding.ASCII.GetBytes(fileString);
-            Stream stream = new MemoryStream(byteArray);
+            Stream stream = new FileStream(fileString, FileMode.Open);
              //act
             sut.SendToSpeech(stream);
             String result = sut.getSTTString();
             //assert
             Assert.AreEqual(" how old is the Brooklyn Bridge", result, true);
-        }*/
+        }
         [TestMethod]
         //coded by agl11
         public void TestInputFile()
