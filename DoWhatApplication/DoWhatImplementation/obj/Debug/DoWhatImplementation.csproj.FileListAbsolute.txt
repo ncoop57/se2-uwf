@@ -249,3 +249,7 @@ C:\se2-uwf\DoWhatApplication\DoWhatImplementation\obj\Debug\DoWhatImplementation
 C:\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\DoWhatImplementation.dll.mdb
 C:\se2-uwf\DoWhatApplication\DoWhatImplementation\obj\Debug\DoWhatImplementation.dll.mdb
 C:\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\DoWhatImplementation.dll.mdb
+C:\se2-uwf\DoWhatApplication\DoWhatImplementation\obj\Debug\DoWhatImplementation.dll.mdb
+C:\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\DoWhatImplementation.dll.mdb
+C:\se2-uwf\DoWhatApplication\DoWhatImplementation\obj\Debug\DoWhatImplementation.dll.mdb
+C:\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\DoWhatImplementation.dll.mdb

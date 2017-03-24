@@ -149,6 +149,7 @@ namespace DoWhatImplementation
                     HttpClientInitializer = credential,
                     ApplicationName = "DoWhat Application Audio",
                 });
+                Console.WriteLine("Send to Speech try block successful...");
             }
             catch (InvalidOperationException e2)
             {

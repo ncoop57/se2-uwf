@@ -31,14 +31,79 @@ namespace DoWhatapp
 		Audio audio = new Audio();
 		Button record = null;
 		bool isRecording = false;
-        String fileName = "";
+        public string filePath;
         //bool audioRecorded = false;
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            filePath = "test";
+            assets = this.Assets;
+            System.IO.Stream fs = ReadFromAssets();
+            base.OnCreate(savedInstanceState);
 
+            // Set our view from the "main" layout resource
+            SetContentView(Resource.Layout.Main);
+
+            //GetInstalledApplications(/*PackageInfoFlags.Services*/);
+
+            // Record to our directory
+            try
+            {
+
+                filePath = Android.OS.Environment.DataDirectory.AbsolutePath;
+               
+                filePath += "/audiotest.wav";
+                Console.WriteLine("The filePath:  " + filePath);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(filePath);
+                Console.WriteLine("The error from filePath:  " + e.GetBaseException());
+            }
+
+
+            //Record button
+            record = FindViewById<Button>(Resource.Id.record);
+            DoWhat dowhatobject = new DoWhat(ReadStopWords());
+            record.Enabled = true;
+            record.Click += (object sender, EventArgs e) =>
+            {
+                isRecording = !isRecording;
+                if (isRecording == false)
+                {
+                    audio.Stop();
+                    audio.RecordingStateChanged += (recording) =>
+                    {
+                        audio.RecordingStateChanged = null;
+                    };
+                    dowhatobject.setAudioFileLocation(filePath);
+                    Console.WriteLine("setAudioFileLocation called...");
+                    dowhatobject.SendToSpeech(fs);
+                    Console.WriteLine("SendToSpeech called...");
+                    Console.WriteLine("what is happening: " + dowhatobject.getSTTString() + "here?");
+                    dowhatobject.ProcessViaNLP(dowhatobject.getSTTString());
+                    Console.WriteLine("ProcessViaNLP called...");
+                    string inputVerb = dowhatobject.getVerb();
+                    Console.WriteLine(dowhatobject.getVerb());
+                    string inputSubject = dowhatobject.getSubject();
+                    Console.WriteLine(dowhatobject.getSubject());
+                    string openVerb = "open";
+                    bool result = inputVerb.Equals(openVerb, StringComparison.Ordinal);
+                    if (result)
+                    {
+                        openApplication(inputSubject);
+                    }
+                }
+                else
+                {
+                    Record();
+                }
+            };
+        }
         async Task Record()
 		{
 			//if (start)
 			//{
-			audio.setFilePath(fileName);
+			audio.setFilePath(filePath);
 			await audio.StartAsync();
 			//audio.RecordAudioCompressed(fileName);
 			//	}
@@ -65,7 +130,6 @@ namespace DoWhatapp
 		//	Console.WriteLine(appList);
 		//	return appList;
 		//}
-
         public void openApplication(string appName)
         {
 
@@ -85,66 +149,5 @@ namespace DoWhatapp
         }
 
         /* runs the app */
-        protected override void OnCreate(Bundle savedInstanceState)
-		{
-			assets = this.Assets;
-			System.IO.Stream fs = ReadFromAssets();
-			base.OnCreate(savedInstanceState);
-
-			// Set our view from the "main" layout resource
-			SetContentView(Resource.Layout.Main);
-
-            //GetInstalledApplications(/*PackageInfoFlags.Services*/);
-
-            // Record to our directory
-            try
-            {
-
-                fileName = GetExternalFilesDir(null).AbsolutePath;
-                //fileName = Android.OS.Environment.GetExternalStoragePublicDirectory(null).AbsolutePath;
-                fileName += "/audiotest.wav";
-            }
-            catch (NullReferenceException e)
-            {
-                e.GetBaseException();
-            }
-
-
-            //Record button
-            record = FindViewById<Button>(Resource.Id.record);
-            DoWhat dowhatobject = new DoWhat(ReadStopWords());
-            record.Enabled = true;
-			record.Click += (object sender, EventArgs e) =>
-			{
-				isRecording = !isRecording;
-				if (isRecording == false)
-				{
-					audio.Stop();
-					audio.RecordingStateChanged += (recording) =>
-					{
-						audio.RecordingStateChanged = null;
-					};
-					dowhatobject.setAudioFileLocation(fileName);
-					dowhatobject.SendToSpeech(fs);
-					dowhatobject.ProcessViaNLP(dowhatobject.getSTTString());
-					string inputVerb = dowhatobject.getVerb();
-					string inputSubject = dowhatobject.getSubject();
-					string openVerb = "open";
-					bool result = inputVerb.Equals(openVerb, StringComparison.Ordinal);
-					if (result)
-					{
-						openApplication(inputSubject);
-					}
-				}
-				else
-				{
-					Record();
-				}
-			};
-			
-
-
-		}
-
-	}
+    }
 }
