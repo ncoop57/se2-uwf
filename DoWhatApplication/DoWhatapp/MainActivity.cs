@@ -31,8 +31,8 @@ namespace DoWhatapp
 		Audio audio = new Audio();
 		Button record = null;
 		bool isRecording = false;
-		string fileName = null;
-		//bool audioRecorded = false;
+		String fileName = "test";
+        //bool audioRecorded = false;
 
 		async Task Record()
 		{
@@ -94,15 +94,24 @@ namespace DoWhatapp
 			// Set our view from the "main" layout resource
 			SetContentView(Resource.Layout.Main);
 
-			//GetInstalledApplications(/*PackageInfoFlags.Services*/);
+            //GetInstalledApplications(/*PackageInfoFlags.Services*/);
 
-			// Record to our directory
-			fileName = GetExternalFilesDir(null).AbsolutePath;
-			fileName += "/audiotest.wav";
+            // Record to our directory
+            try
+            {
+
+                fileName = GetExternalFilesDir(null).AbsolutePath;
+                //fileName = Android.OS.Environment.GetExternalStoragePublicDirectory(null).AbsolutePath;
+                fileName += "/audiotest.wav";
+            }
+            catch (NullReferenceException e)
+            {
+                e.GetBaseException();
+            }
 
 
-			//Record button
-			record = FindViewById<Button>(Resource.Id.record);
+            //Record button
+            record = FindViewById<Button>(Resource.Id.record);
             DoWhat dowhatobject = new DoWhat(ReadStopWords());
             record.Enabled = true;
 			record.Click += (object sender, EventArgs e) =>
@@ -117,15 +126,15 @@ namespace DoWhatapp
 					};
 					dowhatobject.setAudioFileLocation(fileName);
 					dowhatobject.SendToSpeech(fs);
-					//dowhatobject.ProcessViaNLP(dowhatobject.getSTTString());
-					//string inputVerb = dowhatobject.getVerb();
-					//string inputSubject = dowhatobject.getSubject();
-					//string openVerb = "open";
-					//bool result = inputVerb.Equals(openVerb, StringComparison.Ordinal);
-					//if (result)
-					//{
-					//	openApplication(inputSubject);
-					//}
+					dowhatobject.ProcessViaNLP(dowhatobject.getSTTString());
+					string inputVerb = dowhatobject.getVerb();
+					string inputSubject = dowhatobject.getSubject();
+					string openVerb = "open";
+					bool result = inputVerb.Equals(openVerb, StringComparison.Ordinal);
+					if (result)
+					{
+						openApplication(inputSubject);
+					}
 				}
 				else
 				{
