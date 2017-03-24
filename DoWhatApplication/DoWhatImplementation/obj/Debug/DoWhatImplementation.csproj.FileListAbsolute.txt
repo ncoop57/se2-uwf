@@ -244,5 +244,8 @@ C:\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\Newtonsoft.Json.xml
 C:\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\Zlib.Portable.xml
 C:\se2-uwf\DoWhatApplication\DoWhatImplementation\obj\Debug\DoWhatImplementation.dll
 C:\se2-uwf\DoWhatApplication\DoWhatImplementation\obj\Debug\DoWhatImplementation.pdb
+C:\se2-uwf\DoWhatApplication\DoWhatImplementation\obj\Debug\DoWhatImplementation.csprojResolveAssemblyReference.cache
+C:\se2-uwf\DoWhatApplication\DoWhatImplementation\obj\Debug\DoWhatImplementation.dll.mdb
+C:\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\DoWhatImplementation.dll.mdb
 C:\se2-uwf\DoWhatApplication\DoWhatImplementation\obj\Debug\DoWhatImplementation.dll.mdb
 C:\se2-uwf\DoWhatApplication\DoWhatImplementation\bin\Debug\DoWhatImplementation.dll.mdb

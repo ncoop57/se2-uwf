@@ -31,10 +31,10 @@ namespace DoWhatapp
 		Audio audio = new Audio();
 		Button record = null;
 		bool isRecording = false;
-		String fileName = "test";
+        String fileName = "";
         //bool audioRecorded = false;
 
-		async Task Record()
+        async Task Record()
 		{
 			//if (start)
 			//{

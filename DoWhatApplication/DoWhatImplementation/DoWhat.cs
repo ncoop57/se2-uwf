@@ -92,54 +92,69 @@ namespace DoWhatImplementation
             //authentication coded agl11
             CloudSpeechAPIService service = CreateAuthorizedClient(file);
             //construction of request coded agl11
-            SyncRecognizeRequest request = new Google.Apis.CloudSpeechAPI.v1beta1.Data.SyncRecognizeRequest()
+            try
             {
-                Config = new Google.Apis.CloudSpeechAPI.v1beta1.Data.RecognitionConfig()
+                SyncRecognizeRequest request = new Google.Apis.CloudSpeechAPI.v1beta1.Data.SyncRecognizeRequest()
                 {
-                    Encoding = "LINEAR16",
-                    SampleRate = 16000,
-                    LanguageCode = "en-US",
-                    SpeechContext = context
-                },
-                Audio = new Google.Apis.CloudSpeechAPI.v1beta1.Data.RecognitionAudio()
+                    Config = new Google.Apis.CloudSpeechAPI.v1beta1.Data.RecognitionConfig()
+                    {
+                        Encoding = "LINEAR16",
+                        SampleRate = 16000,
+                        LanguageCode = "en-US",
+                        SpeechContext = context
+                    },
+                    Audio = new Google.Apis.CloudSpeechAPI.v1beta1.Data.RecognitionAudio()
+                    {
+                        Content = Convert.ToBase64String(File.ReadAllBytes(inputFileString))
+                    }
+                };
+                //construct the send request
+                var response = service.Speech.Syncrecognize(request).Execute();
+                foreach (var result in response.Results)
                 {
-                    Content = Convert.ToBase64String(File.ReadAllBytes(inputFileString))
+                    foreach (var alternative in result.Alternatives)
+                        outputProcessedString = outputProcessedString + " " + (alternative.Transcript);
                 }
-            };
-            //construct the send request
-            var response = service.Speech.Syncrecognize(request).Execute();
-            foreach (var result in response.Results)
-            {
-                foreach (var alternative in result.Alternatives)
-                    outputProcessedString = outputProcessedString + " " + (alternative.Transcript);
+                this.setSTTString(outputProcessedString);
             }
-            this.setSTTString(outputProcessedString);
 
+            catch (Exception e1)
+            {
+                e1.GetBaseException();
+            }
         }
-        //static method to create a client for authentication coded agl11
+            //static method to create a client for authentication coded agl11
         static public CloudSpeechAPIService CreateAuthorizedClient(Stream file)
         {
-			//return new CloudSpeechAPIService(new BaseClientService.Initializer
-			//{
-			//  ApplicationName = "DoWhat",
-			//ApiKey = "AIzaSyBohQs4EQQc9EtVyWTCS1DWVdAOdqFWnaA",
-			//});
+            //return new CloudSpeechAPIService(new BaseClientService.Initializer
+            //{
+            //  ApplicationName = "DoWhat",
+            //ApiKey = "AIzaSyBohQs4EQQc9EtVyWTCS1DWVdAOdqFWnaA",
+            //});
 
-			//GoogleCredential credential = GoogleCredential.GetApplicationDefaultAsync().Result;
-			GoogleCredential credential = GoogleCredential.FromStream(file);
-             // Inject the Cloud Storage scope if required, per API tutorials
-             if (credential.IsCreateScopedRequired)
-             {
-                 credential = credential.CreateScoped(new[]
-                 {
+            //GoogleCredential credential = GoogleCredential.GetApplicationDefaultAsync().Result;
+            try
+            {
+                GoogleCredential credential = GoogleCredential.FromStream(file);
+                // Inject the Cloud Storage scope if required, per API tutorials
+                if (credential.IsCreateScopedRequired)
+                {
+                    credential = credential.CreateScoped(new[]
+                    {
                      CloudSpeechAPIService.Scope.CloudPlatform
                  });
-             }
-             return new CloudSpeechAPIService(new BaseClientService.Initializer()
-             {
-                 HttpClientInitializer = credential,
-                 ApplicationName = "DoWhat Application Audio",
-             });
+                }
+                return new CloudSpeechAPIService(new BaseClientService.Initializer()
+                {
+                    HttpClientInitializer = credential,
+                    ApplicationName = "DoWhat Application Audio",
+                });
+            }
+            catch (InvalidOperationException e2)
+            {
+                e2.GetBaseException();
+                return null;
+            }
         }
         //NLP coded nac33
         public void ProcessViaNLP(string input)
