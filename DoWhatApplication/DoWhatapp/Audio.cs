@@ -135,7 +135,7 @@ namespace DoWhatapp
 				// Hardware source of recording.
 				AudioSource.Mic,
 				// Frequency
-				11025,
+				16000,
 				// Mono or stereo
 				ChannelIn.Mono,
 				// Audio encoding

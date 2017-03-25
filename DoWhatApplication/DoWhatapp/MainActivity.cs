@@ -32,12 +32,11 @@ namespace DoWhatapp
 		Button record = null;
 		bool isRecording = false;
         public string filePath;
-        //bool audioRecorded = false;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             filePath = "test";
             assets = this.Assets;
-            System.IO.Stream fs = ReadFromAssets();
             base.OnCreate(savedInstanceState);
 
             // Set our view from the "main" layout resource
@@ -77,7 +76,7 @@ namespace DoWhatapp
                     };
                     dowhatobject.setAudioFileLocation(filePath);
                     Console.WriteLine("setAudioFileLocation called...");
-                    dowhatobject.SendToSpeech(fs);
+					dowhatobject.SendToSpeech(ReadKey());
                     Console.WriteLine("SendToSpeech called...");
                     Console.WriteLine("what is happening: " + dowhatobject.getSTTString() + "here?");
                     dowhatobject.ProcessViaNLP(dowhatobject.getSTTString());
@@ -138,7 +137,7 @@ namespace DoWhatapp
 
         }
 
-		public System.IO.Stream ReadFromAssets() 
+		public System.IO.Stream ReadKey() 
 		{
 			return assets.Open("DoWhat-65e8c7b1824e.json");
 		}

@@ -72,8 +72,10 @@ namespace DoWhatImplementation
             this.target = "";
             string line;
             skipWords = new List<string>();
-            // Read the file and display it line by line coded nac33
-            while ((line = new StreamReader(file).ReadLine()) != null)
+			// Read the file and display it line by line coded nac33, mod jrp58
+			StreamReader sr = new StreamReader(file);
+			while (((line = sr.ReadLine()) != null)
+			       && (sr.Peek() > -1))
             {
                 skipWords.Add(line);
             }

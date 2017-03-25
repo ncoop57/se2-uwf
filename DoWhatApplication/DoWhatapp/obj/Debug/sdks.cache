@@ -2,18 +2,18 @@
 <Sdk>
   <AndroidApiLevel>25</AndroidApiLevel>
   <AndroidApiLevelName>25</AndroidApiLevelName>
-  <AndroidNdkPath>C:\Program Files\Android\ndk\android-ndk-r13b</AndroidNdkPath>
-  <AndroidSdkBuildToolsPath>C:\Users\Loco3\AppData\Local\Xamarin\MonoForAndroid\AndroidSDK\build-tools\25.0.1</AndroidSdkBuildToolsPath>
-  <AndroidSdkBuildToolsBinPath>C:\Users\Loco3\AppData\Local\Xamarin\MonoForAndroid\AndroidSDK\build-tools\25.0.1</AndroidSdkBuildToolsBinPath>
-  <AndroidSdkPath>C:\Users\Loco3\AppData\Local\Xamarin\MonoForAndroid\AndroidSDK</AndroidSdkPath>
-  <JavaSdkPath>C:\Program Files\Java\jdk1.8.0_60</JavaSdkPath>
-  <MonoAndroidBinPath>C:\Program Files (x86)\MSBuild\Xamarin\Android</MonoAndroidBinPath>
-  <MonoAndroidToolsPath>C:\Program Files (x86)\MSBuild\Xamarin\Android</MonoAndroidToolsPath>
+  <AndroidNdkPath>/Users/julienpugh/Library/Developer/Xamarin/android-ndk/android-ndk-r13b</AndroidNdkPath>
+  <AndroidSdkBuildToolsPath>/Users/julienpugh/Library/Developer/Xamarin/android-sdk-macosx/build-tools/25.0.1</AndroidSdkBuildToolsPath>
+  <AndroidSdkBuildToolsBinPath>/Users/julienpugh/Library/Developer/Xamarin/android-sdk-macosx/build-tools/25.0.1</AndroidSdkBuildToolsBinPath>
+  <AndroidSdkPath>/Users/julienpugh/Library/Developer/Xamarin/android-sdk-macosx</AndroidSdkPath>
+  <JavaSdkPath>/usr</JavaSdkPath>
+  <MonoAndroidBinPath>/Library/Frameworks/Xamarin.Android.framework/Versions/Current/bin</MonoAndroidBinPath>
+  <MonoAndroidToolsPath>/Library/Frameworks/Xamarin.Android.framework/Versions/Current/lib/mandroid</MonoAndroidToolsPath>
   <ReferenceAssemblyPaths>
-    <ReferenceAssemblyPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\</ReferenceAssemblyPath>
+    <ReferenceAssemblyPath>/Library/Frameworks/Mono.framework/External/xbuild-frameworks/MonoAndroid/v1.0/</ReferenceAssemblyPath>
   </ReferenceAssemblyPaths>
   <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
-  <ZipAlignPath>C:\Users\Loco3\AppData\Local\Xamarin\MonoForAndroid\AndroidSDK\build-tools\25.0.1</ZipAlignPath>
+  <ZipAlignPath>/Users/julienpugh/Library/Developer/Xamarin/android-sdk-macosx/build-tools/25.0.1</ZipAlignPath>
   <MonoAndroidIncludePath />
   <SupportedApiLevel>25</SupportedApiLevel>
   <AndroidSequencePointsMode>None</AndroidSequencePointsMode>
