@@ -18,6 +18,7 @@ namespace Implementations
     public class ApplicationStringMatcher : IStringMatcher
     {
 
+        // The main application name you are trying to extract from a user's input
         private string keyWord;
 
         public string KeyWord
@@ -30,6 +31,7 @@ namespace Implementations
 
         }
 
+        // The list of application names you will be trying to match against the user's input
         private IList<string> dictionary;
 
         public IList<string> Dictionary
@@ -51,6 +53,10 @@ namespace Implementations
 
         }
 
+        /**
+         * Creates an ApplicationStringMatcher with a given list of application names
+         * @param dictionary the file stream where the file for the list of application names is located
+         */
         public ApplicationStringMatcher(Stream dictionary)
         {
 
@@ -58,6 +64,10 @@ namespace Implementations
 
         }
 
+        /**
+         * Creates an ApplicationStringMatcher with a given list of application names
+         * @param application the list of application names
+         */
         public ApplicationStringMatcher(IList<string> applications)
         {
 
@@ -65,6 +75,10 @@ namespace Implementations
 
         }
 
+        /**
+         * Reads in the application names from a stream and stores them
+         * @param dictionary the file stream where the file for the list of application names is located 
+         */
         public void loadDictionary(StreamReader dictionary)
         {
 
@@ -78,6 +92,10 @@ namespace Implementations
 
         }
 
+        /**
+         * Stores a given list of applications
+         * @param application the list of application names 
+         */
         public void loadDictionary(IList<string> applications)
         {
 
@@ -99,6 +117,11 @@ namespace Implementations
 
         }
 
+        /**
+         *  Goes through a given string and finds the application name the user said and stores it
+         *  @param str the user's input which contains just the name of the application the user said
+         *  @return str
+         */
         public string process(string str)
         {
 

@@ -16,10 +16,10 @@ namespace Interfaces
     public interface IStringMatcher
     {
 
-        // The main word you are trying to extract from a user's input
+        // The main substring you are trying to extract from a user's input
         string KeyWord { get; }
 
-        // The list of words you will be trying to match against the user's input
+        // The list of strings you will be trying to match against the user's input
         IList<string> Dictionary { get; }
 
         // Reads in the dictionary from a file into the dictionary you will be using
