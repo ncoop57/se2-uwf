@@ -53,6 +53,8 @@ namespace Implementations
 
         }
 
+        public ApplicationStringMatcher() {}
+
         /**
          * Creates an ApplicationStringMatcher with a given list of application names
          * @param dictionary the file stream where the file for the list of application names is located

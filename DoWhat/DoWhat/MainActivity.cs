@@ -18,7 +18,8 @@ namespace DoWhat
         // Instances variable
         private ISpeech speech;
         private IStringMatcher commandMatcher;
-        private IStringMatcher applicationMatcher;
+        private Context context;
+        //private IStringMatcher applicationMatcher;
         private Button recordBtn;
         private TextView textBox;
 
@@ -29,10 +30,11 @@ namespace DoWhat
 
             // Create the speech object to use for speech recognition
             speech = new Speech(10);
+            this.context = this;
             
             // Initialize the command matcher and application matcher to use to parse the user's input
             commandMatcher = new CommandStringMatcher(this.Assets.Open("dictionary.txt"));
-            applicationMatcher = new ApplicationStringMatcher(this.getApplications());
+            //applicationMatcher = new ApplicationStringMatcher(this.getApplications());
 
 
 
@@ -49,7 +51,7 @@ namespace DoWhat
                 
                 // create the intent and start the activity
                 var voiceIntent = speech.setUpIntent(new Intent());
-                StartActivityForResult(voiceIntent, speech.VOICE);
+                StartActivityForResult(voiceIntent, 10);
 
             };
 
@@ -76,16 +78,21 @@ namespace DoWhat
 
 
                         // Process the user's input and parsing the command the user said
-                        string processed = commandMatcher.process(textInput);
+                        string arguments = commandMatcher.process(textInput);
+
+                        IAction action = Implementations.Action.createAction(context, commandMatcher.KeyWord);
+                        action.setArguments(arguments);
+
+                        action.run();
 
                         // Process the user's input and parsing the application the user said
-                        applicationMatcher.process(processed);                        
+                        //applicationMatcher.process(processed);                        
 
                         // Create an action to handle what the user is requesting the app to do
-                        Action action = new Action(commandMatcher, applicationMatcher, this);
+                        //Action action = new Action(commandMatcher, applicationMatcher, this);
 
                         // Perform the action
-                        action.run();
+                        //action.run();
 
                     }
                     else
