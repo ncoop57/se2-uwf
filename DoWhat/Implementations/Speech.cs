@@ -44,7 +44,6 @@ namespace Implementations
             // voiceIntent.PutExtra(RecognizerIntent.ExtraLanguage, Java.Util.Locale.German);
             // if you wish it to recognise the default Locale language and German
             // if you do use another locale, regional dialects may not be recognised very well
-
             voiceIntent.PutExtra(RecognizerIntent.ExtraLanguage, Java.Util.Locale.Default);
 
             return voiceIntent;
