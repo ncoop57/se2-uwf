@@ -127,18 +127,22 @@ namespace Implementations
 
             str = str.ToLower();
 
+            // Search through the application names word by word
             foreach (string word in this.dictionary)
             {
 
+                //Check if the user's input contains the current word
                 if (word.ToLower().Contains(str))
                 {
 
+                    // Store the word the user said
                     this.keyWord = word;
 
                 }
 
             }
 
+            // Return the string that was given
             return str;
 
         }
