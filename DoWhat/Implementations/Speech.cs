@@ -24,6 +24,11 @@ namespace Implementations
 
         }
 
+        /**
+         * Sets up the intent for speech recognition
+         * @param intent a base intent to be set up for speech recognition
+         * @return the set up speech recognition intent
+         */
         public Intent setUpIntent(Intent voiceIntent)
         {
 
@@ -52,6 +57,7 @@ namespace Implementations
 
         }
 
+        // Currently not being used
         public void startRecording()
         {
             throw new NotImplementedException();
