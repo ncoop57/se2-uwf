@@ -16,7 +16,7 @@ namespace Implementations
     public class SearchAction : IAction
     {
 
-        private IStringMatcher searchMatcher;
+        private string searchTerm;
 
         private Context context;
 
@@ -30,13 +30,25 @@ namespace Implementations
         public void setArguments(string args)
         {
 
-            this.searchMatcher.process(args);
+            this.searchTerm = args;
 
         }
 
         public void run()
         {
-            throw new NotImplementedException();
+
+            this.search();
+
+        }
+
+        private void search()
+        {
+
+            var uri = Android.Net.Uri.Parse("http://www.google.com/search?q=" + this.searchTerm);
+            Intent intent = new Intent(Intent.ActionView, uri);
+
+            context.StartActivity(intent);
+
         }
         
     }

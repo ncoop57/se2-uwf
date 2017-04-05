@@ -22,17 +22,14 @@ namespace Implementations
          */
         private IStringMatcher applicationMatcher;
 
+        // The context needed to be able to do functions on the phone
         private Context context;
-
-        // List of application package names that are installed on the phone
-        private IList<string> applicationPackages;
         
         public OpenAction(Context context, IStringMatcher applicationMatcher)
         {
 
             this.applicationMatcher = applicationMatcher;
             this.context = context;
-            this.applicationPackages = this.getApplications();
 
         }
 
@@ -48,8 +45,7 @@ namespace Implementations
         }
 
         /**
-         * Sets the needed arguments for the action to be performed
-         * @param args The arguments needed to run an action
+         * Runs the action needed to be performed
          */
         public void run()
         {
@@ -60,6 +56,7 @@ namespace Implementations
 
         /**
          * Launch the application on the pone with the given application package name
+         * @param application the package name for the application to be passed
          */
         public void openApplication(string application)
         {
@@ -69,36 +66,6 @@ namespace Implementations
 
             // Launch the application
             context.StartActivity(intent);
-
-        }
-
-        /**
-         * Get all of the application package names that are currently stored on the phone as and store them as a list
-         * @return the list of application package names
-         */
-        public IList<string> getApplications()
-        {
-
-            // Create a list to store all of the applications
-            IList<string> applications = new List<string>();
-
-            // Run through each of the applications installed on the phone
-            foreach (var item in this.context.PackageManager.GetInstalledApplications(new Android.Content.PM.PackageInfoFlags()))
-            {
-
-                // Get the context which has the name of the application package from each of the items
-                var context = this.context.CreatePackageContext(item.PackageName, PackageContextFlags.IgnoreSecurity);
-
-                // Add the name of the application package to the application list
-                applications.Add(context.PackageName);
-
-                // Print out the application package names to the console
-                Console.WriteLine(context.PackageName);
-
-            }
-
-            // Return the list of application package names that are installed on the phone
-            return applications;
 
         }
 

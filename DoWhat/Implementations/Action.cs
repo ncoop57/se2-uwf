@@ -19,10 +19,12 @@ namespace Implementations
         public static IAction createAction(Context context, string command)
         {
 
+            AssetReader reader = new AssetReader(context);
+
             IAction newAction = null;
 
             if (command.Equals("open"))
-                newAction = new OpenAction(context, new ApplicationStringMatcher());
+                newAction = new OpenAction(context, new ApplicationStringMatcher(reader.getApplications()));
             else if (command.Equals("search"))
                 newAction = new SearchAction(context);
 

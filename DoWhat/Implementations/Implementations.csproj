@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Action.cs" />
     <Compile Include="ApplicationStringMatcher.cs" />
+    <Compile Include="AssetReader.cs" />
     <Compile Include="CommandStringMatcher.cs" />
     <Compile Include="OpenAction.cs" />
     <Compile Include="SearchAction.cs" />
