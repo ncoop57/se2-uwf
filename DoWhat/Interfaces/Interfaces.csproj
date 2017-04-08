@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAction.cs" />
+    <Compile Include="ICalendarAction.cs" />
     <Compile Include="ISpeech.cs" />
     <Compile Include="IStringMatcher.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
