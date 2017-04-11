@@ -73,6 +73,7 @@
     <Compile Include="Action.cs" />
     <Compile Include="ApplicationStringMatcher.cs" />
     <Compile Include="AssetReader.cs" />
+    <Compile Include="CalendarStringMatcher.cs" />
     <Compile Include="CommandStringMatcher.cs" />
     <Compile Include="CreateCalendarAction.cs" />
     <Compile Include="OpenAction.cs" />
