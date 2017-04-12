@@ -6,8 +6,6 @@ using Android.Content;
 using System;
 using Interfaces;
 using Implementations;
-using System.Collections.Generic;
-using Android.Content.Res;
 
 namespace DoWhat
 {
@@ -83,13 +81,23 @@ namespace DoWhat
 
                     }
                     else
-                        textBox.Text = "No speech was recognised";
+                    {
+                        //textBox.Text = "No speech was recognised";
+                        this.ErrorMessage("No Speech was recognised.");
+                    }
 
                 }
 
             }
 
             base.OnActivityResult(requestCode, resultVal, data);
+
+        }
+        //Toaster method to display error message (error message is determined by method in which it is called: Matthew Baning
+        public void ErrorMessage(String text)
+        {
+            String errorText = text;
+            Toast.MakeText(this, errorText, ToastLength.Long).Show();
 
         }
 

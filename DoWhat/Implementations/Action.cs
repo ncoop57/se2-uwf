@@ -28,7 +28,7 @@ namespace Implementations
             else if (command.Equals("search"))
                 newAction = new SearchAction(context);
             else if (command.Equals("create")) 
-                newAction = new CreateCalendarAction(context);
+                newAction = new CreateCalendarAction();
             return newAction;
 
         }

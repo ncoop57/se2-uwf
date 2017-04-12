@@ -18,7 +18,7 @@ using System.Threading;
 
 namespace Implementations
 {
-    public class CalendarAction : IAction
+    public class CreateCalendarAction : IAction
     {
         string summary;
         string location;
