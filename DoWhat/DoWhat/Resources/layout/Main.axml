@@ -3,6 +3,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
     android:minWidth="25px"
     android:minHeight="25px">
     <LinearLayout
@@ -18,6 +20,14 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/outputTxt" />
+            android:id="@+id/outputTxt"
+            android:hint="enter a command"
+            android:inputType="text"
+            android:imeOptions="actionDone" />
+        <Button
+            android:text="Enter Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/enterBtn" />
     </LinearLayout>
 </LinearLayout>

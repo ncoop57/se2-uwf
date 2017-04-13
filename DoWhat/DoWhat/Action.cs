@@ -34,7 +34,8 @@ namespace DoWhat
         public void run()
         {
 
-            if (this.commandMatcher.KeyWord.Equals("open"))
+
+			if (this.commandMatcher.KeyWord.Equals("open"))
                 activity.openApplication(applicationMatcher.KeyWord);
 
         }
