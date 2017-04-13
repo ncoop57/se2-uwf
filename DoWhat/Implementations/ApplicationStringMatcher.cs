@@ -46,24 +46,6 @@ namespace Implementations
 
         }
 
-        public IList<string> StopWords
-        {
-
-            get;
-
-        }
-
-        /**
-         * Creates an ApplicationStringMatcher with a given list of application names
-         * @param dictionary the file stream where the file for the list of application names is located
-         */
-        public ApplicationStringMatcher(Stream dictionary)
-        {
-
-            this.loadDictionary(new StreamReader(dictionary));
-
-        }
-
         /**
          * Creates an ApplicationStringMatcher with a given list of application names
          * @param application the list of application names
@@ -71,49 +53,7 @@ namespace Implementations
         public ApplicationStringMatcher(IList<string> applications)
         {
 
-            this.loadDictionary(applications);
-
-        }
-
-        /**
-         * Reads in the application names from a stream and stores them
-         * @param dictionary the file stream where the file for the list of application names is located 
-         */
-        public void loadDictionary(StreamReader dictionary)
-        {
-
-            string line;
-            // Read the file and display it line by line coded nac33, mod jrp58
-            while (((line = dictionary.ReadLine()) != null) && (dictionary.Peek() > -1))
-            {
-                Dictionary.Add(line);
-            }
-            dictionary.Close();
-
-        }
-
-        /**
-         * Stores a given list of applications
-         * @param application the list of application names 
-         */
-        public void loadDictionary(IList<string> applications)
-        {
-
             this.dictionary = applications;
-
-        }
-
-        public void loadStopWords(string stopFilePath)
-        {
-
-            string line;
-            // Read the file and display it line by line coded nac33, mod jrp58
-            StreamReader sr = new StreamReader(stopFilePath);
-            while (((line = sr.ReadLine()) != null) && (sr.Peek() > -1))
-            {
-                this.StopWords.Add(line);
-            }
-            sr.Close();
 
         }
 
