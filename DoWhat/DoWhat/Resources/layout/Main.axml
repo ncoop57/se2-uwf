@@ -29,5 +29,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/enterBtn" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Did you mean these?"
+            android:inputType="none"
+            android:visibility="invisible"
+            android:id="@+id/cmdPrompt" />
+        <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:id="@+id/cmdList" />
     </LinearLayout>
 </LinearLayout>

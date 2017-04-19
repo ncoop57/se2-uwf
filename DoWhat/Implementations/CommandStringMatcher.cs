@@ -55,7 +55,6 @@ namespace Implementations
 
             this.dictionary = new List<string>();
             this.loadDictionary(new StreamReader(dictionary));
-
         }
 
         /**
@@ -105,7 +104,6 @@ namespace Implementations
             return string.Join(" ", str.Split(' ').Except(this.dictionary)); 
 
         }
-
-    }
+	}
 
 }

@@ -26,8 +26,6 @@ namespace DoWhat
 		
 		public static void UpdateIdValues()
 		{
-			global::Implementations.Resource.String.ApplicationName = global::DoWhat.Resource.String.ApplicationName;
-			global::Implementations.Resource.String.Hello = global::DoWhat.Resource.String.Hello;
 			global::Interfaces.Resource.String.ApplicationName = global::DoWhat.Resource.String.ApplicationName;
 			global::Interfaces.Resource.String.Hello = global::DoWhat.Resource.String.Hello;
 		}
@@ -63,6 +61,12 @@ namespace DoWhat
 		
 		public partial class Id
 		{
+			
+			// aapt resource value: 0x7f050005
+			public const int cmdList = 2131034117;
+			
+			// aapt resource value: 0x7f050004
+			public const int cmdPrompt = 2131034116;
 			
 			// aapt resource value: 0x7f050003
 			public const int enterBtn = 2131034115;

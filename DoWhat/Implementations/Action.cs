@@ -18,7 +18,6 @@ namespace Implementations
 
         public static IAction createAction(Context context, string command)
         {
-
             AssetReader reader = new AssetReader(context);
 
             IAction newAction = null;
@@ -27,8 +26,8 @@ namespace Implementations
                 newAction = new OpenAction(context, new ApplicationStringMatcher(reader.getApplications()));
             else if (command.Equals("search"))
                 newAction = new SearchAction(context);
-            else if (command.Equals("create")) 
-                newAction = new CreateCalendarAction();
+            //else if (command.Equals("create")) 
+                //newAction = new CreateCalendarAction();
             return newAction;
 
         }
