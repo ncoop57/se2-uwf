@@ -29,6 +29,13 @@ namespace Implementations
                 return this.keyWord;
             }
 
+            set
+            {
+
+                this.keyWord = value;
+
+            }
+
         }
 
         // The list of commands you will be trying to match against the user's input
@@ -55,6 +62,8 @@ namespace Implementations
 
             this.dictionary = new List<string>();
             this.loadDictionary(new StreamReader(dictionary));
+            this.keyWord = "";
+
         }
 
         /**

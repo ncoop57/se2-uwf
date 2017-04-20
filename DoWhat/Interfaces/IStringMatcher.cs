@@ -17,7 +17,7 @@ namespace Interfaces
     {
 
         // The main substring you are trying to extract from a user's input
-        string KeyWord { get; }
+        string KeyWord { get; set; }
 
         // The list of strings you will be trying to match against the user's input
         IList<string> Dictionary { get; }

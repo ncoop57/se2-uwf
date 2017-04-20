@@ -26,7 +26,16 @@ namespace Implementations
 
             get
             {
+
                 return this.keyWord;
+
+            }
+
+            set
+            {
+
+                this.keyWord = value;
+
             }
 
         }

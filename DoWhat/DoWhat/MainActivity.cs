@@ -65,11 +65,27 @@ namespace DoWhat
 			{
 				textCommand = textBox.Text;
 				string arguments = commandMatcher.process(textCommand);
-				IAction action = Implementations.Action.createAction(context, commandMatcher.KeyWord);
-				action.setArguments(arguments);
 
-				action.run();
-			};
+                if (!commandMatcher.KeyWord.Equals(""))
+                {
+
+                    IAction action = Implementations.Action.createAction(context, commandMatcher.KeyWord);
+                    action.setArguments(arguments);
+                    action.run();
+
+                }
+                else
+                {
+
+                    this.ErrorMessage("No commands recognised.");
+                    this.CommandList();
+
+                }
+
+                commandMatcher.KeyWord = "";
+
+            };
+
 		}
 
 		// Some default method which is triggered when the result of the android speech returned
@@ -94,23 +110,39 @@ namespace DoWhat
 						// Process the user's input and parsing the command the user said
 						string arguments = commandMatcher.process(textInput);
 
-						IAction action = Implementations.Action.createAction(context, commandMatcher.KeyWord);
-						action.setArguments(arguments);
+                        if (!commandMatcher.KeyWord.Equals(""))
+                        {
 
-						// Add suggested to list if command does not equal "open"
-						if (commandMatcher.KeyWord.Equals("search"))
+                            IAction action = Implementations.Action.createAction(context, commandMatcher.KeyWord);
+                            action.setArguments(arguments);
+                            action.run();
+
+                        }
+                        else
+                        {
+
+                            this.ErrorMessage("No commands recognised.");
+                            this.CommandList();
+
+                        }
+                        // Add suggested to list if command does not equal "open"
+                        if (commandMatcher.KeyWord.Equals("search"))
 						{
+
 							suggestionManager.storeSuggestion("search " + arguments);
+
 						}
 
-						action.run();
+                        commandMatcher.KeyWord = "";
 
 					}
 					else
 					{
+
 						textBox.Text = "No speech was recognised";
 						this.ErrorMessage("No Speech was recognised.");
 						this.CommandList();
+
 					}
 
 				}
