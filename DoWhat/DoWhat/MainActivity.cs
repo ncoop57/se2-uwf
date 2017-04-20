@@ -33,6 +33,8 @@ namespace DoWhat
 			// Create the speech object to use for speech recognition
 			speech = new Speech(10);
 
+            this.context = this;
+
 			// Initialize the command matcher and application matcher to use to parse the user's input
 			commandMatcher = new CommandStringMatcher(this.Assets.Open("dictionary.txt"));
 
