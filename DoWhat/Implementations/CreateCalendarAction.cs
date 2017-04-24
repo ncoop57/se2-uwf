@@ -15,19 +15,22 @@ using Google.Apis.Auth.OAuth2;
 using Google.Apis.Calendar.v3.Data;
 using Google.Apis.Services;
 using System.Threading;
+using Google.Apis.Util.Store;
+using System.IO;
 
 namespace Implementations
 {
-	public class CreateCalendarAction /*:IAction*/
+	public class CreateCalendarAction : IAction
 	{
 		string summary;
 		string location;
 		DateTime start;
 		DateTime end;
 		string emailAddress;
+        Context context;
 
-		//overloaded method with two parameters
-		/*public void createCalendarEvent(string summary, DateTime start)
+        //overloaded method with two parameters
+        /*public void createCalendarEvent(string summary, DateTime start)
 		{
 			UserCredential credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
 				new ClientSecrets
@@ -68,8 +71,8 @@ namespace Implementations
 			};
 			//Event recurringEvent = service.Events.Insert(event1, "primary").Execute();
 		}*/
-		//overloaded method with all possible variables
-		/*public void createCalendarEvent(string summary, string location, DateTime start, DateTime end, string emailAddress, string timeZone)
+        //overloaded method with all possible variables
+        /*public void createCalendarEvent(string summary, string location, DateTime start, DateTime end, string emailAddress, string timeZone)
         {
             UserCredential credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
                 new ClientSecrets
@@ -109,6 +112,96 @@ namespace Implementations
             Event recurringEvent = service.Events.Insert(event1, "primary").Execute();
         }*/
 
+
+        static string[] Scopes = { CalendarService.Scope.CalendarReadonly };
+        static string ApplicationName = "DoWhat";
+
+        public CreateCalendarAction(Context context)
+        {
+
+            this.context = context;
+
+        }
+
+        private void createEvent()
+        {
+
+            Console.WriteLine("Creating Event...");
+
+            UserCredential credential;
+            try
+            {
+                credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
+                    new ClientSecrets
+                    {
+                        ClientId = "924106574067-m766vb0884dlqgchq7ejajch02i13d5k.apps.googleusercontent.com",
+                        ClientSecret = "L766a0iHpOi8s3WKOlDo0OKC"
+                    },
+                Scopes,
+                "user",
+                CancellationToken.None).Result;
+                /*var auth = new OAuth2Authenticator(
+                   clientId: "924106574067-tk5gm1lqphsn16tt567d8mama57s7pm8.apps.googleusercontent.com",
+                   clientSecret: "MWOyUjpri3n3PHNg4CVrQzM4",
+                   scope: "profile",
+                   authorizeUrl: new Uri("https://accounts.google.com/o/oauth2/auth"),
+                   redirectUrl: new Uri("https://www.google.com/"),
+                   accessTokenUrl: new Uri("https://accounts.google.com/o/oauth2/token"),
+                   isUsingNativeUI: true);
+
+                System.Uri uri_netfx = auth.GetInitialUrlAsync().Result;
+                global::Android.Net.Uri uri_android = global::Android.Net.Uri.Parse(uri_netfx.AbsoluteUri);
+                var chrome_tab = (global::Android.Support.CustomTabs.CustomTabsIntent.Builder)auth.GetUI(this);
+                global::Android.Support.CustomTabs.CustomTabsIntent ct_intent = chrome_tab.Build();
+
+                ct_intent.LaunchUrl(this, uri_android);
+                */
+
+                // Create Google Calendar API service.
+                var service = new CalendarService(new BaseClientService.Initializer()
+                {
+                    HttpClientInitializer = credential,
+                    ApplicationName = ApplicationName,
+                });
+
+                // Define parameters of request.
+                EventsResource.ListRequest request = service.Events.List("primary");
+                request.TimeMin = DateTime.Now;
+                request.ShowDeleted = false;
+                request.SingleEvents = true;
+                request.MaxResults = 10;
+                request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
+
+                // List events.
+                Events events = request.Execute();
+                Console.WriteLine("Upcoming events:");
+                if (events.Items != null && events.Items.Count > 0)
+                {
+                    foreach (var eventItem in events.Items)
+                    {
+                        string when = eventItem.Start.DateTime.ToString();
+                        if (String.IsNullOrEmpty(when))
+                        {
+                            when = eventItem.Start.Date;
+                        }
+                        Console.WriteLine("{0} ({1})", eventItem.Summary, when);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No upcoming events found.");
+                }
+                }
+            catch (AggregateException e)
+            {
+
+                Console.WriteLine(e.StackTrace);
+
+            }
+            Console.Read();
+
+        }
+
 		public void setArguments(string args)
 		{
 			IList<string> months = new List<string>();
@@ -125,15 +218,15 @@ namespace Implementations
 			months.Add("november");
 			months.Add("december");
 
-			CalendarStringMatcher matcher = new CalendarStringMatcher(months);
+			/*CalendarStringMatcher matcher = new CalendarStringMatcher(months);
 			string date = matcher.process(args);
 			this.start = DateTime.Parse(date);
-			this.summary = matcher.KeyWord;
+			this.summary = matcher.KeyWord;*/
 		}
 
-		/*public void run()
+		public void run()
 		{
-			createCalendarEvent(this.summary, this.start);
-		}*/
+			createEvent();
+		}
 	}
 }
