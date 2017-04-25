@@ -128,7 +128,7 @@ namespace Implementations
 
             Console.WriteLine("Creating Event...");
 
-            UserCredential credential;
+           /* UserCredential credential;
             try
             {
                 credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
@@ -155,7 +155,7 @@ namespace Implementations
                 global::Android.Support.CustomTabs.CustomTabsIntent ct_intent = chrome_tab.Build();
 
                 ct_intent.LaunchUrl(this, uri_android);
-                */
+                
 
                 // Create Google Calendar API service.
                 var service = new CalendarService(new BaseClientService.Initializer()
@@ -198,7 +198,7 @@ namespace Implementations
                 Console.WriteLine(e.StackTrace);
 
             }
-            Console.Read();
+            Console.Read();*/
 
         }
 
