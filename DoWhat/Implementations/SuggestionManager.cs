@@ -72,21 +72,25 @@ namespace Implementations
 				validCommand = "search";
 			}
 
-			if (validCommand.Equals(""))
+			specificCommands = LoadOpenableApps(initialCmd, specificCommands);
+
+			if (validCommand.Equals("") && specificCommands.Count == 0)
 			{
 				suggestedWords.Sort();
 				return suggestedWords;
 			}
-
-			foreach (var command in suggestedWords)
+			else if (specificCommands.Count == 0)
 			{
-				if (validCommand.Equals("open") && command.Contains("open"))
+				foreach (var command in suggestedWords)
 				{
-					specificCommands.Add(command);
-				}
-				if (validCommand.Equals("search") && command.Contains("search"))
-				{
-					specificCommands.Add(command);
+					if (validCommand.Equals("open") && command.Contains("open"))
+					{
+						specificCommands.Add(command);
+					}
+					if (validCommand.Equals("search") && command.Contains("search"))
+					{
+						specificCommands.Add(command);
+					}
 				}
 			}
 			specificCommands.Sort();
@@ -117,14 +121,30 @@ namespace Implementations
 		private void loadOpenCommands()
 		{
 			foreach (var item in this.context.PackageManager.GetInstalledApplications(new Android.Content.PM.PackageInfoFlags()))
-            {
-                // Get the context which has the name of the application package from each of the items
-                var context = this.context.CreatePackageContext(item.PackageName, PackageContextFlags.IgnoreSecurity);
+			{
+				// Get the context which has the name of the application package from each of the items
+				var context = this.context.CreatePackageContext(item.PackageName, PackageContextFlags.IgnoreSecurity);
 
 				// Add the name of the application package to the application list
-				suggestedWords.Add("open " + context.PackageName);
+				suggestedWords.Add("open " + context.ApplicationInfo.LoadLabel(context.PackageManager));
 
-            }
+			}
+		}
+
+		private List<String> LoadOpenableApps(string command, List<String> commands)
+		{
+			command = command.ToLower();
+			foreach (var item in this.context.PackageManager.GetInstalledApplications(new Android.Content.PM.PackageInfoFlags()))
+			{
+				// Get the context which has the name of the application package from each of the items
+				var context = this.context.CreatePackageContext(item.PackageName, PackageContextFlags.IgnoreSecurity);
+				var appName = context.ApplicationInfo.LoadLabel(context.PackageManager).ToLower();
+				if (command.Contains(appName) && !commands.Contains("open " + appName))
+				{
+					commands.Add("open " + appName);
+				}
+			}
+			return commands;
 		}
 	}
 }

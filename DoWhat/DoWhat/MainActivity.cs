@@ -4,8 +4,10 @@ using Android.OS;
 using Android.Speech;
 using Android.Content;
 using System;
+using System.Collections.Generic;
 using Interfaces;
 using Implementations;
+
 
 namespace DoWhat
 {
@@ -33,7 +35,7 @@ namespace DoWhat
 			// Create the speech object to use for speech recognition
 			speech = new Speech(10);
 
-            this.context = this;
+			this.context = this;
 
 			// Initialize the command matcher and application matcher to use to parse the user's input
 			commandMatcher = new CommandStringMatcher(this.Assets.Open("dictionary.txt"));
@@ -66,25 +68,25 @@ namespace DoWhat
 				textCommand = textBox.Text;
 				string arguments = commandMatcher.process(textCommand);
 
-                if (!commandMatcher.KeyWord.Equals(""))
-                {
+				if (!commandMatcher.KeyWord.Equals(""))
+				{
 
-                    IAction action = Implementations.Action.createAction(context, commandMatcher.KeyWord);
-                    action.setArguments(arguments);
-                    action.run();
+					IAction action = Implementations.Action.createAction(context, commandMatcher.KeyWord);
+					action.setArguments(arguments);
+					action.run();
 
-                }
-                else
-                {
+				}
+				else
+				{
+					this.ErrorMessage("No commands recognised.");
+					var commands = suggestionManager.pullSpecificCommands(textCommand);
+					this.CommandList(commands);
 
-                    this.ErrorMessage("No commands recognised.");
-                    this.CommandList();
+				}
 
-                }
+				commandMatcher.KeyWord = "";
 
-                commandMatcher.KeyWord = "";
-
-            };
+			};
 
 		}
 
@@ -110,30 +112,32 @@ namespace DoWhat
 						// Process the user's input and parsing the command the user said
 						string arguments = commandMatcher.process(textInput);
 
-                        if (!commandMatcher.KeyWord.Equals(""))
-                        {
+						suggestionManager.pullSpecificCommands(textInput);
+						if (!commandMatcher.KeyWord.Equals(""))
+						{
 
-                            IAction action = Implementations.Action.createAction(context, commandMatcher.KeyWord);
-                            action.setArguments(arguments);
-                            action.run();
+							IAction action = Implementations.Action.createAction(context, commandMatcher.KeyWord);
+							action.setArguments(arguments);
+							action.run();
 
-                        }
-                        else
-                        {
+						}
+						else
+						{
 
-                            this.ErrorMessage("No commands recognised.");
-                            this.CommandList();
+							this.ErrorMessage("No commands recognised.");
+							var commands = suggestionManager.pullSpecificCommands(textInput);
+							this.CommandList(commands);
 
-                        }
-                        // Add suggested to list if command does not equal "open"
-                        if (commandMatcher.KeyWord.Equals("search"))
+						}
+						// Add suggested to list if command does not equal "open"
+						if (commandMatcher.KeyWord.Equals("search"))
 						{
 
 							suggestionManager.storeSuggestion("search " + arguments);
 
 						}
 
-                        commandMatcher.KeyWord = "";
+						commandMatcher.KeyWord = "";
 
 					}
 					else
@@ -141,7 +145,7 @@ namespace DoWhat
 
 						textBox.Text = "No speech was recognised";
 						this.ErrorMessage("No Speech was recognised.");
-						this.CommandList();
+						this.CommandList(suggestionManager.SuggestedWords);
 
 					}
 
@@ -158,15 +162,16 @@ namespace DoWhat
 
 		}
 
-		public void CommandList()
+		public void CommandList(List<String> commands)
 		{
 			// Code for command list viewing
-			var commands = suggestionManager.SuggestedWords;
 			ArrayAdapter adapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleListItem1, commands);
 			commands.Sort();
 			commandList.Adapter = adapter;
 			commandHeaderText.Enabled = true;
 			commandList.Enabled = true;
+			commandHeaderText.Visibility = Android.Views.ViewStates.Visible;
+			commandList.Visibility = Android.Views.ViewStates.Visible;
 		}
 	}
 }
