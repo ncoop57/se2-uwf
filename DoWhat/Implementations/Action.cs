@@ -15,7 +15,6 @@ namespace Implementations
 {
     public class Action
     {
-
         public static IAction createAction(Context context, string command)
         {
             AssetReader reader = new AssetReader(context);

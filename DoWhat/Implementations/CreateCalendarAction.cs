@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -32,7 +32,7 @@ namespace Implementations
             string userName = "DoWhat";                                                                     // A string used to identify a user. 
             string[] scopes = new string[]
             {
-                CalendarService.Scope.Calendar,                                                             // Manage your calendars 
+                CalendarService.Scope.Calendar,    
             }; // here is where we Request the user to give us access, or use the Refresh Token that was previously stored in %AppData% 
             UserCredential credential = GoogleWebAuthorizationBroker.AuthorizeAsync(new ClientSecrets
             {
@@ -82,6 +82,7 @@ namespace Implementations
             months.Add("october");
             months.Add("november");
             months.Add("december");
+
             CalendarStringMatcher matcher = new CalendarStringMatcher(months);
             string date = matcher.process(args);
             this.start = DateTime.Parse(date);
