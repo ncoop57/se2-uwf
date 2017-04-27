@@ -25,8 +25,8 @@ namespace DoWhat
 		private ListView commandList;
 		private string textCommand;
 
-		// Main entry point for our application
-		protected override void OnCreate(Bundle bundle)
+        // Main entry point for our application
+        protected override void OnCreate(Bundle bundle)
 		{
 			base.OnCreate(bundle);
 
