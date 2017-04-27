@@ -52,13 +52,13 @@
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
+    <!-- <Reference Include="Microsoft.CSharp" /> -->
     <Reference Include="Mono.Android" />
-    <Reference Include="mscorlib" />
+    <!-- <Reference Include="mscorlib" /> -->
     <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Xml" />
+    <!-- <Reference Include="System.Core" /> -->
+    <!-- <Reference Include="System.Xml.Linq" /> -->
+    <!-- <Reference Include="System.Xml" /> -->
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -87,7 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Implementations\Implementations.csproj">
-      <Project>{0C0DADAD-FEB2-425E-8D00-BE7CD47B9340}</Project>
+      <Project>{0c0dadad-feb2-425e-8d00-be7cd47b9340}</Project>
       <Name>Implementations</Name>
     </ProjectReference>
     <ProjectReference Include="..\Interfaces\Interfaces.csproj">

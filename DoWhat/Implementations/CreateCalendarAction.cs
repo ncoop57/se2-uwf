@@ -20,6 +20,7 @@ using System.IO;
 
 namespace Implementations
 {
+    //coded agl1 with help from nac33
     public class CreateCalendarAction : IAction
     {
         string summary;
@@ -69,6 +70,15 @@ namespace Implementations
         }
         public void setArguments(string args)
         {
+            string input = args;
+            int first = input.IndexOf(" ") + 1;
+            string date = input.Substring(first);
+            Console.WriteLine("date:  " + date);
+            string[] words = args.ToLower().Split(' ');
+            string eventName = words[0];
+            this.summary = eventName;
+            Console.WriteLine("eventName:  " + eventName);
+
             IList<string> months = new List<string>();
             months.Add("january");
             months.Add("february");
@@ -83,9 +93,9 @@ namespace Implementations
             months.Add("november");
             months.Add("december");
             CalendarStringMatcher matcher = new CalendarStringMatcher(months);
-            string date = matcher.process(args);
             this.start = DateTime.Parse(date);
-            this.summary = matcher.KeyWord;
+            
+
         }
         public void run()
         {
