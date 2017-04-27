@@ -2,7 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Google.Apis.Auth.OAuth2;
+using System.Threading;
+using Google.Apis.Util.Store;
+using Google.Apis.Calendar.v3;
+using Google.Apis.Services;
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -10,17 +16,12 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Interfaces;
-using Google.Apis.Calendar.v3;
-using Google.Apis.Auth.OAuth2;
 using Google.Apis.Calendar.v3.Data;
-using Google.Apis.Services;
-using System.Threading;
-using Google.Apis.Util.Store;
-using System.IO;
+
 
 namespace Implementations
 {
-    //coded agl1 with help from nac33
+    //coded agl1 and nac33
     public class CreateCalendarAction : IAction
     {
         string summary;
@@ -30,7 +31,7 @@ namespace Implementations
         {
             string clientId = "924106574067-tk5gm1lqphsn16tt567d8mama57s7pm8.apps.googleusercontent.com";   //From Google Developer console https://console.developers.google.com 
             string clientSecret = "MWOyUjpri3n3PHNg4CVrQzM4";                                               //From Google Developer console https://console.developers.google.com 
-            string userName = "DoWhat";                                                                     // A string used to identify a user. 
+            string userName = "agl11";                                                                     // A string used to identify a user. 
             string[] scopes = new string[]
             {
                 CalendarService.Scope.Calendar,                                                             // Manage your calendars 
@@ -60,9 +61,8 @@ namespace Implementations
                     DateTime = start.AddHours(1.0),                                             //default 1.0 hours
                     TimeZone = TimeZone.CurrentTimeZone.ToString()                             //default central
                 },
-                // event1 = service.Events.Insert(event1, "primary").Execute();
             };
-            service.Events.Insert(event1, "primary");
+            service.Events.Insert(event1, "primary").Execute();
         }
         public CreateCalendarAction(Context context)
         {
