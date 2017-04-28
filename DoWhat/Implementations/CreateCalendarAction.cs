@@ -29,18 +29,24 @@ namespace Implementations
         Context context;
         public void CreateCalendarEvent(string summary, DateTime start)
         {
-            string clientId = "924106574067-tk5gm1lqphsn16tt567d8mama57s7pm8.apps.googleusercontent.com";   //From Google Developer console https://console.developers.google.com 
-            string clientSecret = "MWOyUjpri3n3PHNg4CVrQzM4";                                               //From Google Developer console https://console.developers.google.com 
+            //string clientId = "924106574067-il14a6fmiqv515i955osn2tu7ij700o8.apps.googleusercontent.com";   //From Google Developer console https://console.developers.google.com 
             string userName = "agl11";                                                                     // A string used to identify a user. 
             string[] scopes = new string[]
             {
                 CalendarService.Scope.Calendar,                                                             // Manage your calendars 
-            }; // here is where we Request the user to give us access, or use the Refresh Token that was previously stored in %AppData% 
-            UserCredential credential = GoogleWebAuthorizationBroker.AuthorizeAsync(new ClientSecrets
+            }; 
+            // here is where we Request the user to give us access, or use the Refresh Token that was previously stored in %AppData% 
+            UserCredential credential;
+            using (var stream = new FileStream("client_secrets.json", FileMode.Open, FileAccess.Read))
             {
-                ClientId = clientId,
-                ClientSecret = clientSecret
-            }, scopes, userName, CancellationToken.None, new FileDataStore("Daimto.GoogleCalendar.Auth.Store")).Result;
+               credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
+               GoogleClientSecrets.Load(stream).Secrets,
+               scopes,
+               userName, CancellationToken.None, new FileDataStore("DoWhat.GoogleCalendar.Auth.Store")).Result;
+            }
+            //below comment contains contents of the client_secrets.json file, in case you can hardcode it
+            //{ "installed":{ "client_id":"924106574067-il14a6fmiqv515i955osn2tu7ij700o8.apps.googleusercontent.com","project_id":"dowhat-160203","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://accounts.google.com/o/oauth2/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","redirect_uris":["urn:ietf:wg:oauth:2.0:oob","http://localhost"]
+ 
             //create the service
             CalendarService service = new CalendarService(new BaseClientService.Initializer()
             {
