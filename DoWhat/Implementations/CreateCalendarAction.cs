@@ -27,6 +27,8 @@ namespace Implementations
         string summary;
         DateTime start;
         Context context;
+
+        // Not currently working
         public void CreateCalendarEvent(string summary, DateTime start)
         {
             //string clientId = "924106574067-il14a6fmiqv515i955osn2tu7ij700o8.apps.googleusercontent.com";   //From Google Developer console https://console.developers.google.com 

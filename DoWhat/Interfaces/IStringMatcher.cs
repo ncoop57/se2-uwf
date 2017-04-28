@@ -13,6 +13,7 @@ using System.IO;
 
 namespace Interfaces
 {
+    // coded by Nathan
     public interface IStringMatcher
     {
 

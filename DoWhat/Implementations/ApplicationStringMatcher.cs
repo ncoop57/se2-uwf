@@ -15,6 +15,7 @@ using System.IO;
 namespace Implementations
 {
 
+    // coded by Nathan
     public class ApplicationStringMatcher : IStringMatcher
     {
 

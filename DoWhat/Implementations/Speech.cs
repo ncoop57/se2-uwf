@@ -9,6 +9,7 @@ using Interfaces;
 
 namespace Implementations
 {
+    // coded by Nathan
     public class Speech : ISpeech
     {
 

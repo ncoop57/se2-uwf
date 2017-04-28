@@ -11,6 +11,7 @@ using Implementations;
 
 namespace DoWhat
 {
+    // coded by Matthew, Nathan, and Julien
 	[Activity(Label = "DoWhat", MainLauncher = true, Icon = "@drawable/icon")]
 	public class MainActivity : Activity
 	{
@@ -53,7 +54,7 @@ namespace DoWhat
 			commandHeaderText = FindViewById<TextView>(Resource.Id.cmdPrompt);
 			commandList = FindViewById<ListView>(Resource.Id.cmdList);
 
-			// Create a button click event for the recordBtn
+			// Create a button click event for the recordBtn : Nathan
 			recordBtn.Click += delegate
 			{
 
@@ -63,6 +64,7 @@ namespace DoWhat
 
 			};
 
+            // coded by Julien
 			enterBtn.Click += delegate
 			{
 				textCommand = textBox.Text;
@@ -90,7 +92,7 @@ namespace DoWhat
 
 		}
 
-		// Some default method which is triggered when the result of the android speech returned
+		// Some default method which is triggered when the result of the android speech returned: Nathan
 		protected override void OnActivityResult(int requestCode, Result resultVal, Intent data)
 		{
 
@@ -162,6 +164,7 @@ namespace DoWhat
 
 		}
 
+        // coded by Julien
 		public void CommandList(List<String> commands)
 		{
 			// Code for command list viewing

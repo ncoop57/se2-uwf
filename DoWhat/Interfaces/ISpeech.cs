@@ -7,6 +7,7 @@ using System.Text;
 
 namespace Interfaces
 {
+    // coded by Nathan
     public interface ISpeech
     {
 

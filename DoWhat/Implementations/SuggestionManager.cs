@@ -15,6 +15,7 @@ using System.IO;
 
 namespace Implementations
 {
+    // coded by Julien
 	public class SuggestionManager
 	{
 		private Context context;
